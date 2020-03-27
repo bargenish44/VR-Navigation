@@ -1,0 +1,33 @@
+{
+    "Points":[
+        {
+            "id":1,
+            "Picture":"./pictures/1",
+            "Neighbors":
+            [
+                {"PointID":2,
+                "Azimut":180},
+                {"PointID":3,
+                "Azimut":90}
+            ]
+        },
+        {
+            "id":2,
+            "Picture":"./pictures/pic2",
+            "Neighbors":
+            [
+                {"PointID":1,
+                "Azimut":0}
+            ]
+        },
+        {
+            "id":3,
+            "Picture":"./pictures/three",
+            "Neighbors":
+            [
+                {"PointID":1,
+                "Azimut":270}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\final project.exe
+C:\Users\barge\Desktop\unity create with code\Demo\final project\obj\Debug\netcoreapp3.0\final project.csprojAssemblyReference.cache
+C:\Users\barge\Desktop\unity create with code\Demo\final project\obj\Debug\netcoreapp3.0\final project.AssemblyInfoInputs.cache
+C:\Users\barge\Desktop\unity create with code\Demo\final project\obj\Debug\netcoreapp3.0\final project.AssemblyInfo.cs
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\final project.deps.json
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\final project.runtimeconfig.json
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\final project.runtimeconfig.dev.json
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\final project.dll
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\final project.pdb
+C:\Users\barge\Desktop\unity create with code\Demo\final project\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\barge\Desktop\unity create with code\Demo\final project\obj\Debug\netcoreapp3.0\final project.csproj.CopyComplete
+C:\Users\barge\Desktop\unity create with code\Demo\final project\obj\Debug\netcoreapp3.0\final project.dll
+C:\Users\barge\Desktop\unity create with code\Demo\final project\obj\Debug\netcoreapp3.0\final project.pdb
