@@ -45,6 +45,11 @@ class Parser
             string s = "[ID : " + PointID + " , Azimuth : " + Azimut+"]";
             return s;
         }
+        public Points DeserializeJson()
+        {
+            Points points = JsonConvert.DeserializeObject<Points>(File.ReadAllText(@"config.json"));
+            return points;
+        }
     }
     
     /*static void Main(string[] args)

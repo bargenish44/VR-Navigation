@@ -15,6 +15,7 @@ public class SphereChanger : MonoBehaviour
     bool changing = false;
 
 
+
     private void Update()
     {
         Stats.timer += Time.deltaTime;
@@ -34,8 +35,10 @@ public class SphereChanger : MonoBehaviour
 
     public void ChangeSphere(Transform nextSphere)
     {
-
         //Start the fading process
+        if (nextSphere is null) Debug.Log("nextSphere is null");
+        if (FadeCamera(nextSphere) is null) Debug.Log("FadeCamera(nextSphere)");
+        if (StartCoroutine(FadeCamera(nextSphere)) is null) Debug.Log("אינחק לעמא");
         StartCoroutine(FadeCamera(nextSphere));
         Stats.Path.Add(nextSphere.gameObject.name);
         Stats.Times.Add(Stats.timer);

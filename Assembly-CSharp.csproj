@@ -166,23 +166,42 @@
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\Internal\GvrCursorHelper.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\Internal\SuppressMemoryAllocationErrorAttribute.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
+    <Compile Include="Assets\GracesGames\Common\Scripts\FiniteStack.cs" />
+    <Compile Include="Assets\GracesGames\Common\Scripts\Utilities.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\AlphanumComparatorFast.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\DemoCaller.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\FileBrowser.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\UI\FileButton.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\UI\LandscapeUserInterface.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\UI\PortraitUserInterface.cs" />
+    <Compile Include="Assets\GracesGames\SimpleFileBrowser\Scripts\UI\UserInterface.cs" />
     <Compile Include="Assets\Scripts\BackHandler.cs" />
     <Compile Include="Assets\Scripts\ContinueAudio.cs" />
     <Compile Include="Assets\Scripts\Exit.cs" />
+    <Compile Include="Assets\Scripts\FileBroswerText.cs" />
+    <Compile Include="Assets\Scripts\MapBuilder.cs" />
+    <Compile Include="Assets\Scripts\Parser.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SphereChanger.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
+    <None Include="Assets\GracesGames\SimpleFileBrowser\ReadMe.txt" />
     <None Include="Assets\Shaders\Insideout.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
+    <None Include="Assets\GracesGames\SimpleFileBrowser\DemoFiles\TextFileWithNewLines.txt" />
+    <None Include="Assets\GracesGames\SimpleFileBrowser\Sprites\IconMonstrLicense.txt" />
     <None Include="Assets\GoogleVR\Shaders\GvrController.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
     <None Include="Assets\GoogleVR\Beta\Shaders\GvrSeeThroughUI.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
+    <None Include="Assets\JsonDotNet\link.xml" />
     <None Include="Assets\GoogleVR\Plugins\Android\AndroidManifest-6DOF.xml" />
+    <None Include="Assets\GracesGames\Third-Party Notices.txt" />
+    <None Include="Assets\GracesGames\SimpleFileBrowser\DemoFiles\DemoText.txt" />
     <None Include="Assets\GoogleVR\Shaders\Video\VideoUnlitShader.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTextureOverlay.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrControllerReticle.shader" />
+    <None Include="Assets\GracesGames\SimpleFileBrowser\Sprites\KenneySpritesLicense.txt" />
     <None Include="Assets\GoogleVR\Plugins\Android\AndroidManifest-Daydream.xml" />
     <None Include="Assets\GoogleVR\Shaders\GvrReticleShader.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlay.shader" />
@@ -403,6 +422,9 @@
     </Reference>
     <Reference Include="Google.ProtocolBuffers">
       <HintPath>C:/Users/barge/Desktop/unity create with code/Demo/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Users/barge/Desktop/unity create with code/Demo/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/barge/Desktop/unity create with code/Demo/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
@@ -758,6 +780,12 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.12f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{7405B0C2-8C09-B5F9-1158-26143DD6F644}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
