@@ -13,7 +13,6 @@ public class FileBroswerText : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR  //Computer
-        Debug.Log("Unity Editor");
         path = EditorUtility.OpenFilePanel("Please select json", "", "json");
         OpenExplorer();
 #else
@@ -35,7 +34,8 @@ public class FileBroswerText : MonoBehaviour
         {
             Parser parser = new Parser();
             var a = parser.DeserializeJson(path);
-            MapBuilder mapBuilder = new MapBuilder();
+            MapBuilder mapBuilder = (new GameObject("MapBuilder")).AddComponent<MapBuilder>();
+            Debug.Log(a.ToString());
             mapBuilder.BuildMap(a);
         }
     }

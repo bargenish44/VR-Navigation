@@ -36,9 +36,6 @@ public class SphereChanger : MonoBehaviour
     public void ChangeSphere(Transform nextSphere)
     {
         //Start the fading process
-        if (nextSphere is null) Debug.Log("nextSphere is null");
-        if (FadeCamera(nextSphere) is null) Debug.Log("FadeCamera(nextSphere)");
-        if (StartCoroutine(FadeCamera(nextSphere)) is null) Debug.Log("אינחק לעמא");
         StartCoroutine(FadeCamera(nextSphere));
         Stats.Path.Add(nextSphere.gameObject.name);
         Stats.Times.Add(Stats.timer);
@@ -61,11 +58,11 @@ public class SphereChanger : MonoBehaviour
                 StartCoroutine(FadeIn(0.75f, m_Fader.GetComponent<Renderer>().material));
                 yield return new WaitForSeconds(0.75f);
 
-                //Change the camera position
+            //Change the camera position
                 Camera.main.transform.parent.position = nextSphere.position;
 
-                //Fade the Quad object out 
-                StartCoroutine(FadeOut(0.75f, m_Fader.GetComponent<Renderer>().material));
+            //Fade the Quad object out 
+            StartCoroutine(FadeOut(0.75f, m_Fader.GetComponent<Renderer>().material));
                 yield return new WaitForSeconds(0.75f);
             }
             else

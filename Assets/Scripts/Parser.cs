@@ -39,7 +39,7 @@ public class Parser
     public class Neighbor
     {
         public int PointID { get; set; }
-        public int Azimut { get; set; }
+        public float Azimut { get; set; }
         public string ToString()
         {
             string s = "[ID : " + PointID + " , Azimuth : " + Azimut + "]";
@@ -54,4 +54,3 @@ public class Parser
     }
 
 }
-
