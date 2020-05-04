@@ -49,8 +49,8 @@ public class Parser
     }
     public Points DeserializeJson(string JsonText)
     {
-        Points points = JsonConvert.DeserializeObject<Points>(File.ReadAllText(JsonText));
+
+        Points points = JsonConvert.DeserializeObject<Points>(JsonText);
         return points;
     }
-
 }
