@@ -14,8 +14,9 @@ public class SphereChanger : MonoBehaviour
 
     private bool first = true;
     private string currentSphere = "";
+    private string gameover = "GameOver";
     //This ensures that we don't mash to change spheres
-    //bool changing = false;
+    private string lastSphere;
 
 
 
@@ -41,14 +42,15 @@ public class SphereChanger : MonoBehaviour
         if (tripod == null) tripod = GameObject.Find("Tripod");
     }
 
-
-    public void ChangeSphere(Transform nextSphere,float angle)
+    //public void ChangeSphere(Transform nextSphere)
+    public void ChangeSphere(Transform nextSphere,float angle,string last)
     {
         if(first)
         {
             first = false;
             currentSphere = nextSphere.name;
             Stats.Path.Add(nextSphere.gameObject.name);
+            lastSphere = last;
         }
         else
         {
@@ -69,21 +71,20 @@ public class SphereChanger : MonoBehaviour
 
         Vector3 v = transform.rotation.eulerAngles;
         float newang = angle  - 180;
-        //while (newang > 360) newang -= 360;
-        //while (newang < 0) newang += 360;
-        //Debug.Log("the new angle is : " + newang);
-        tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
+        //tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
         //tripod.transform.SetParent(nextSphere.transform);
         
-        //tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
-        //float hotspotX;
-        //float hotspotY;
-        //float hotspotZ;
+        tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
         //tripod.transform.LookAt(hotspot.transform);
         //tripod.transform.rotation.y += 180;
         //Debug.Log(tripod.transform.rotation.eulerAngles.ToString());
         //tripod.transform.Rotate(170, 0, 0);
         //tripod.transform.localRotation = Quaternion.Euler(v.x, v.y, v.z);
+        if (nextSphere.name.Substring(6).Equals(lastSphere))
+        {
+            Stats.CreateCsvFile();
+            tripod.GetComponent<SceneCtrl>().ChangeScene(gameover);
+        }
     }
 
     IEnumerator FadeCamera(Transform nextSphere)

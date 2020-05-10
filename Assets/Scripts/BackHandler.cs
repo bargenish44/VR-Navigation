@@ -18,7 +18,6 @@ public class BackHandler : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            Stats.CreateCsvFile();
             Debug.Log("Goodbye cruel world!");
         }
     }

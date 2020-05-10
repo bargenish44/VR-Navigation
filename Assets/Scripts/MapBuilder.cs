@@ -12,8 +12,11 @@ public class MapBuilder : MonoBehaviour
     private Material material;
     private Renderer renderer;
     private Texture2D hotspotPic;
+    private Texture2D FinalHotspotPic;
     private string hotspotName = "Textures/arrow";
+    private string finalHotspotName = "Textures/FinalArrow";
     private string shaderStyle = "Insideout";
+    //private string shaderStyle = "new";
     private Sprite hotspot;
     private SpriteRenderer sr;
     private List<GameObject> sp = new List<GameObject>();
@@ -21,9 +24,11 @@ public class MapBuilder : MonoBehaviour
     private int fromPointID;
     private int toPointID;
     private float sphereScale = 3;
+    private float sphereScaleY = 1;
     private Dictionary<(int,int),float> azimuts = new Dictionary<(int, int), float>();
     private GameObject tripod;
-
+    private string lastSphere;
+    private Sprite sprite;
 
     private void Start()
     {
@@ -33,22 +38,26 @@ public class MapBuilder : MonoBehaviour
     {
         sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
         hotspotPic = Resources.Load<Texture2D>(hotspotName);
+        FinalHotspotPic = Resources.Load<Texture2D>(finalHotspotName);
         for (int i = 0; i < points.points.Length; i++)
         {
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             sphere.transform.position = new Vector3((sphereScale + 0.5f) * i, 0, 0);
             sphere.name += points.points[i].id;
-            sphere.transform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
+            sphere.transform.localScale = new Vector3(sphereScale, sphereScaleY, sphereScale);
             sphere.gameObject.GetComponent<SphereCollider>().enabled = false;
             renderer = sphere.GetComponent<Renderer>();
-
+            
             material = new Material(Shader.Find(shaderStyle));
+            //material = new Material(Shader.Find("Skybox/Cubemap"));
             sphere.GetComponent<Renderer>().material = material;
             var picture = Resources.Load<Texture2D>(points.points[i].Picture);
             //var picture = (Texture2D) LoadPNG(points.points[i].Picture);
             renderer.material.mainTexture = picture;
+            //renderer.material.mainTextureScale = new Vector2(1, 3); // tiling
             sp.Add(sphere);
         }
+        lastSphere = points.points[points.points.Length - 1].id+"";
         for (int i = 0; i < points.points.Length; i++)
         {
             for (int j = 0; j < points.points[i].Neighbors.Length; j++)
@@ -66,7 +75,7 @@ public class MapBuilder : MonoBehaviour
                 float z = 0.4f * Mathf.Sin(-wantedAzimuthRad);
                 go.transform.localRotation = Quaternion.Euler(0, wantedAzimuthDeg + 90, 0);
                 sr.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
-                var sprite = Sprite.Create(hotspotPic, new Rect(0, 0, hotspotPic.width, hotspotPic.height), new Vector3(0.1f, 0.1f));
+                sprite = toPointID.ToString().Equals(lastSphere) ? HotspotPic(FinalHotspotPic) : HotspotPic(hotspotPic);
                 go.transform.localPosition = new Vector3(x, y, z);
                 sr.sprite = sprite;
                 SphereCollider sc = go.AddComponent(typeof(SphereCollider)) as SphereCollider;
@@ -85,12 +94,9 @@ public class MapBuilder : MonoBehaviour
                 trigger.triggers.Add(exit);
             }
         }
-        //Debug.LogError(sp[0].name);
         GameObject wantedSphere = sp[0];
-        //foreach (KeyValuePair<(int, int), float> pair in azimuts)
-        //    Debug.Log((pair.Key, pair.Value));
 
-        sphereChanger.ChangeSphere(wantedSphere.transform, 180);
+        sphereChanger.ChangeSphere(wantedSphere.transform, 180,lastSphere);
     }
 
     private void OnPointerDownDelegate(PointerEventData data)
@@ -102,13 +108,11 @@ public class MapBuilder : MonoBehaviour
         try
         {
             string fromPoint = data.lastPress.name.Substring(7);
-            //Debug.LogError("Last press is : " + data.lastPress + "length is : " + data.lastPress.name.Length);
-            //Debug.LogError(fromPoint);
             azimuth = azimuts[(Int32.Parse(data.pointerPressRaycast.gameObject.name.Substring(7)), Int32.Parse(data.lastPress.name.Substring(7)))];
             //Debug.Log("the angle from : " + data.pointerPressRaycast.gameObject.name.Substring(7) + " to : " + data.lastPress.name.Substring(7) + " is : " + azimuth);
         }
         catch (Exception e) { Debug.LogError(e.StackTrace); }
-        sphereChanger.ChangeSphere(wantedSphere.transform,azimuth);
+        sphereChanger.ChangeSphere(wantedSphere.transform,azimuth,lastSphere);
     }
     private void OnPointerEnterDelegate(PointerEventData data)
     {
@@ -125,7 +129,7 @@ public class MapBuilder : MonoBehaviour
         }
         //GameObject wantedHotspot = GameObject.Find("Sphere" + requestedID).transform.Find("hotspot" + fromPoint).gameObject;
         //Debug.LogError(data);
-        script.GVRon(requestedID, azimuth);
+        script.GVRon(requestedID, azimuth,lastSphere);
     }
     private void OnPointerExitDelegate(PointerEventData data)
     {
@@ -165,5 +169,9 @@ public class MapBuilder : MonoBehaviour
         original.SetPixels(newPixels);
         original.Apply();
         return original;
+    }
+    private Sprite HotspotPic(Texture2D pic)
+    {
+        return Sprite.Create(pic, new Rect(0, 0, pic.width, pic.height), new Vector3(0.1f, 0.1f));
     }
 }

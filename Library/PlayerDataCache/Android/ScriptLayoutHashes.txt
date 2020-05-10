@@ -1,9 +1,10 @@
 Android
 PlayerPath?
-C:/Users/barge/Desktop/Check.apk
+C:/Users/barge/Desktop/VRNavigation.apk
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/2.unity
+Assets/Scenes/GameOver.unity
 SceneListEnd?
 49dffeb1e9c4048498843b3d8d261e2c Assembly-CSharp.dll:GracesGames.SimpleFileBrowser.Scripts.UI.PortraitUserInterface
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret

@@ -11,10 +11,10 @@ public static class Stats {
     public static void CreateCsvFile()
     {
         Times.Add(timer);
-        string data=System.DateTime.Now+ ":,";
+        string data=System.DateTime.Now+ " -\n";
         for (int i = 0; i < Path.Count;i++)
         {
-            data += Path[i]+" . Times is : "+Times[i]+",";
+            data += Path[i]+" : Time - "+Times[i]+". ";
         }
         try
         {

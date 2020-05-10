@@ -14,6 +14,7 @@ public class VrGaze : MonoBehaviour
     public float azimuth = 0f;
     private SphereChanger sphereChanger;
     private GameObject wantedsphere;
+    private string lastsphere;
     //private GameObject wantedHotspot;
     private 
     // Start is called before the first frame update
@@ -33,11 +34,12 @@ public class VrGaze : MonoBehaviour
         if(imgGaze.fillAmount >= 1)moveSphere();
     }
 
-    public void GVRon(string _current , float _azimuth)
+    public void GVRon(string _current , float _azimuth,string lastsphere)
     {
         gvrStatus = true;
         current = _current;
         azimuth = _azimuth;
+        this.lastsphere = lastsphere;
         //wantedHotspot = hotspot;
     }
     public void GVROff()
@@ -53,7 +55,6 @@ public class VrGaze : MonoBehaviour
         //Debug.Log("Clicked");
         //Debug.Log("current is : " + current + "\nlast is : " + last + "\azimuth is : " + azimuth);
         wantedsphere = GameObject.Find("Sphere" + current);
-        sphereChanger.ChangeSphere(wantedsphere.transform, azimuth);
-        //Stats.CreateCsvFile();
+        sphereChanger.ChangeSphere(wantedsphere.transform, azimuth,lastsphere);
     }
 }
