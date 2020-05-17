@@ -13,307 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-05-10T04:38:59.877+03:00
-  initializedAtString: 2020-05-10T04:00:22.018+03:00
+  lastUpdatedAtString: 2020-05-10T19:03:29.651+03:00
+  initializedAtString: 2020-05-10T19:03:29.651+03:00
   entries:
-  - path: .vs\Demo\v16\.suo
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\.vs\Demo\v16\.suo
-    projectPath: .vs\Demo\v16\.suo
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: .vs\Demo\v16\Browse.VC.db
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\.vs\Demo\v16\Browse.VC.db
-    projectPath: .vs\Demo\v16\Browse.VC.db
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: .vs\Demo\v16\Server\sqlite3\storage.ide
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\.vs\Demo\v16\Server\sqlite3\storage.ide
-    projectPath: .vs\Demo\v16\Server\sqlite3\storage.ide
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Dinning.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Dinning.mat
-    projectPath: Assets\Materials\Dinning.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Dinning.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Dinning.mat.meta
-    projectPath: Assets\Materials\Dinning.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Fader.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Fader.mat
-    projectPath: Assets\Materials\Fader.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Fader.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Fader.mat.meta
-    projectPath: Assets\Materials\Fader.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Hall.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Hall.mat
-    projectPath: Assets\Materials\Hall.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Hall.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Hall.mat.meta
-    projectPath: Assets\Materials\Hall.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Insideout.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Insideout.mat
-    projectPath: Assets\Materials\Insideout.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Insideout.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Insideout.mat.meta
-    projectPath: Assets\Materials\Insideout.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Kitchen.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Kitchen.mat
-    projectPath: Assets\Materials\Kitchen.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Materials\Kitchen.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Materials\Kitchen.mat.meta
-    projectPath: Assets\Materials\Kitchen.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials.meta
-    projectPath: Assets\Resources\Materials.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\arrow.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\arrow.mat
-    projectPath: Assets\Resources\Materials\arrow.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\arrow.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\arrow.mat.meta
-    projectPath: Assets\Resources\Materials\arrow.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\Dinning.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\Dinning.mat
-    projectPath: Assets\Resources\Materials\Dinning.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\Dinning.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\Dinning.mat.meta
-    projectPath: Assets\Resources\Materials\Dinning.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\Hall.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\Hall.mat
-    projectPath: Assets\Resources\Materials\Hall.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\Hall.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\Hall.mat.meta
-    projectPath: Assets\Resources\Materials\Hall.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\Kitchen.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\Kitchen.mat
-    projectPath: Assets\Resources\Materials\Kitchen.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Materials\Kitchen.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Materials\Kitchen.mat.meta
-    projectPath: Assets\Resources\Materials\Kitchen.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\0.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\0.jpg.meta
-    projectPath: Assets\Resources\Textures\0.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\1.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\1.jpg.meta
-    projectPath: Assets\Resources\Textures\1.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\2.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\2.jpg.meta
-    projectPath: Assets\Resources\Textures\2.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\3.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\3.jpg.meta
-    projectPath: Assets\Resources\Textures\3.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\4.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\4.jpg.meta
-    projectPath: Assets\Resources\Textures\4.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\5.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\5.jpg.meta
-    projectPath: Assets\Resources\Textures\5.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\6.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\6.jpg.meta
-    projectPath: Assets\Resources\Textures\6.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\20200329_114052.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\20200329_114052.jpg.meta
-    projectPath: Assets\Resources\Textures\boaz home\20200329_114052.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials.meta
-    projectPath: Assets\Resources\Textures\boaz home\Materials.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114052.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114052.mat
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114052.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114052.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114052.mat.meta
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114052.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114316.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114316.mat
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114316.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114316.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114316.mat.meta
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114316.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114351.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114351.mat
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114351.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114351.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114351.mat.meta
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114351.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114512.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114512.mat
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114512.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\boaz home\Materials\20200329_114512.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\boaz
-      home\Materials\20200329_114512.mat.meta
-    projectPath: Assets\Resources\Textures\boaz home\Materials\20200329_114512.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\Dinning.jpg
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\Dinning.jpg
-    projectPath: Assets\Resources\Textures\Dinning.jpg
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\Dinning.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\Dinning.jpg.meta
-    projectPath: Assets\Resources\Textures\Dinning.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\FinalArrow.png
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\FinalArrow.png
-    projectPath: Assets\Resources\Textures\FinalArrow.png
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Assets\Resources\Textures\FinalArrow.png.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\FinalArrow.png.meta
-    projectPath: Assets\Resources\Textures\FinalArrow.png.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Assets\Resources\Textures\Hall.jpg
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\Hall.jpg
-    projectPath: Assets\Resources\Textures\Hall.jpg
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\Hall.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\Hall.jpg.meta
-    projectPath: Assets\Resources\Textures\Hall.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\Kitchen.jpg
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\Kitchen.jpg
-    projectPath: Assets\Resources\Textures\Kitchen.jpg
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\Kitchen.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\Kitchen.jpg.meta
-    projectPath: Assets\Resources\Textures\Kitchen.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Resources\Textures\new\1.jpg.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\new\1.jpg.meta
-    projectPath: Assets\Resources\Textures\new\1.jpg.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: Assets\Resources\Textures\new\10.jpg.meta
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Resources\Textures\new\10.jpg.meta
     projectPath: Assets\Resources\Textures\new\10.jpg.meta
@@ -560,117 +262,15 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Assets\Scenes\2.unity
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scenes\2.unity
-    projectPath: Assets\Scenes\2.unity
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Scenes\Demo.unity
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scenes\Demo.unity
-    projectPath: Assets\Scenes\Demo.unity
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Scenes\GameOver.unity
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scenes\GameOver.unity
-    projectPath: Assets\Scenes\GameOver.unity
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Assets\Scenes\GameOver.unity.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scenes\GameOver.unity.meta
-    projectPath: Assets\Scenes\GameOver.unity.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Assets\Scripts\BackHandler.cs
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scripts\BackHandler.cs
-    projectPath: Assets\Scripts\BackHandler.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Scripts\MapBuilder.cs
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scripts\MapBuilder.cs
-    projectPath: Assets\Scripts\MapBuilder.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Scripts\SphereChanger.cs
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scripts\SphereChanger.cs
-    projectPath: Assets\Scripts\SphereChanger.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Scripts\Stats.cs
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scripts\Stats.cs
-    projectPath: Assets\Scripts\Stats.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Scripts\VrGaze.cs
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Scripts\VrGaze.cs
-    projectPath: Assets\Scripts\VrGaze.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Assets\Sprites.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Sprites.meta
-    projectPath: Assets\Sprites.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Assets\Sprites\cursor_grab.png
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Sprites\cursor_grab.png
-    projectPath: Assets\Sprites\cursor_grab.png
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Assets\Sprites\cursor_grab.png.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Sprites\cursor_grab.png.meta
-    projectPath: Assets\Sprites\cursor_grab.png.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Assets\Sprites\Materials.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Sprites\Materials.meta
-    projectPath: Assets\Sprites\Materials.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Assets\Sprites\Materials\cursor_grab.mat
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Sprites\Materials\cursor_grab.mat
-    projectPath: Assets\Sprites\Materials\cursor_grab.mat
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Assets\Sprites\Materials\cursor_grab.mat.meta
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Assets\Sprites\Materials\cursor_grab.mat.meta
-    projectPath: Assets\Sprites\Materials\cursor_grab.mat.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\AnnotationManager
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\AnnotationManager
-    projectPath: Library\AnnotationManager
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: Library\assetDatabase3
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\assetDatabase3
     projectPath: Library\assetDatabase3
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\CurrentLayout.dwlt
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\CurrentLayout.dwlt
     projectPath: Library\CurrentLayout.dwlt
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\CurrentMaximizeLayout.dwlt
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\CurrentMaximizeLayout.dwlt
-    projectPath: Library\CurrentMaximizeLayout.dwlt
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -680,9 +280,9 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Library\expandedItems
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\expandedItems
-    projectPath: Library\expandedItems
+  - path: Library\gfu\cache\branches.yaml
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\gfu\cache\branches.yaml
+    projectPath: Library\gfu\cache\branches.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -692,11 +292,17 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: Library\gfu\cache\gitlog.yaml
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\gfu\cache\gitlog.yaml
+    projectPath: Library\gfu\cache\gitlog.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: Library\gfu\cache\gitstatusentries.yaml
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\gfu\cache\gitstatusentries.yaml
     projectPath: Library\gfu\cache\gitstatusentries.yaml
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\gfu\cache\gittrackingstatus.yaml
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\gfu\cache\gittrackingstatus.yaml
@@ -710,299 +316,149 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Library\InspectorExpandedItems.asset
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\InspectorExpandedItems.asset
-    projectPath: Library\InspectorExpandedItems.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: Library\LastBuild.buildreport
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\LastBuild.buildreport
     projectPath: Library\LastBuild.buildreport
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\0b\0b22078c288f1b44b99a3bbaedc98f64.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\0b\0b22078c288f1b44b99a3bbaedc98f64.info
-    projectPath: Library\metadata\0b\0b22078c288f1b44b99a3bbaedc98f64.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\2a\2afe2dac202a80344836f5313702e36f
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\2a\2afe2dac202a80344836f5313702e36f
-    projectPath: Library\metadata\2a\2afe2dac202a80344836f5313702e36f
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\38\388de115ff358724b82596bf2e282d63
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\38\388de115ff358724b82596bf2e282d63
-    projectPath: Library\metadata\38\388de115ff358724b82596bf2e282d63
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\38\388de115ff358724b82596bf2e282d63.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\38\388de115ff358724b82596bf2e282d63.info
-    projectPath: Library\metadata\38\388de115ff358724b82596bf2e282d63.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\39\3940adc4b4c96e34fb5ab7447c79b30f
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\39\3940adc4b4c96e34fb5ab7447c79b30f
-    projectPath: Library\metadata\39\3940adc4b4c96e34fb5ab7447c79b30f
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\50\502e908b5ae59c6429f91b00f1afb5c1
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\50\502e908b5ae59c6429f91b00f1afb5c1
-    projectPath: Library\metadata\50\502e908b5ae59c6429f91b00f1afb5c1
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\5d\5dd506795b79e5144a61af06187795a5
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\5d\5dd506795b79e5144a61af06187795a5
-    projectPath: Library\metadata\5d\5dd506795b79e5144a61af06187795a5
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\6a\6ac19c57ed037a84096323b96c6defa3
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\6a\6ac19c57ed037a84096323b96c6defa3
-    projectPath: Library\metadata\6a\6ac19c57ed037a84096323b96c6defa3
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\6d\6d4982616e3fff349b3c976ed0a8c38c.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\6d\6d4982616e3fff349b3c976ed0a8c38c.info
-    projectPath: Library\metadata\6d\6d4982616e3fff349b3c976ed0a8c38c.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\72\72867935ab9d7264ba8abb14b1f860b2
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\72\72867935ab9d7264ba8abb14b1f860b2
-    projectPath: Library\metadata\72\72867935ab9d7264ba8abb14b1f860b2
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\72\72867935ab9d7264ba8abb14b1f860b2.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\72\72867935ab9d7264ba8abb14b1f860b2.info
-    projectPath: Library\metadata\72\72867935ab9d7264ba8abb14b1f860b2.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\85\85a3c4333c65a9e4db1fc54ff64377ba.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\85\85a3c4333c65a9e4db1fc54ff64377ba.info
-    projectPath: Library\metadata\85\85a3c4333c65a9e4db1fc54ff64377ba.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\88\8837d7eafac552748bf5dd80643edf9b.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\88\8837d7eafac552748bf5dd80643edf9b.info
-    projectPath: Library\metadata\88\8837d7eafac552748bf5dd80643edf9b.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\9a\9a904bcee2ce1ab4382342154eee7dc5.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\9a\9a904bcee2ce1ab4382342154eee7dc5.info
-    projectPath: Library\metadata\9a\9a904bcee2ce1ab4382342154eee7dc5.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\a9\a92e104809305a940aac076ba15799e9.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\a9\a92e104809305a940aac076ba15799e9.info
-    projectPath: Library\metadata\a9\a92e104809305a940aac076ba15799e9.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\bb\bbbdd8028f36eb94aa545d0752d56fa6
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\bb\bbbdd8028f36eb94aa545d0752d56fa6
-    projectPath: Library\metadata\bb\bbbdd8028f36eb94aa545d0752d56fa6
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\bb\bbbdd8028f36eb94aa545d0752d56fa6.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\bb\bbbdd8028f36eb94aa545d0752d56fa6.info
-    projectPath: Library\metadata\bb\bbbdd8028f36eb94aa545d0752d56fa6.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\c0\c01d5ee369bdf7641a7fd9c5d4a6d9fb
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\c0\c01d5ee369bdf7641a7fd9c5d4a6d9fb
-    projectPath: Library\metadata\c0\c01d5ee369bdf7641a7fd9c5d4a6d9fb
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\c0\c01d5ee369bdf7641a7fd9c5d4a6d9fb.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\c0\c01d5ee369bdf7641a7fd9c5d4a6d9fb.info
-    projectPath: Library\metadata\c0\c01d5ee369bdf7641a7fd9c5d4a6d9fb.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\c9\c9752efb4c2f1914290b3d9b85b011ff.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\c9\c9752efb4c2f1914290b3d9b85b011ff.info
-    projectPath: Library\metadata\c9\c9752efb4c2f1914290b3d9b85b011ff.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\metadata\d2\d2a65c98d8279eb44a9a96f8b73c0c1c
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\d2\d2a65c98d8279eb44a9a96f8b73c0c1c
-    projectPath: Library\metadata\d2\d2a65c98d8279eb44a9a96f8b73c0c1c
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\d2\d2a65c98d8279eb44a9a96f8b73c0c1c.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\d2\d2a65c98d8279eb44a9a96f8b73c0c1c.info
-    projectPath: Library\metadata\d2\d2a65c98d8279eb44a9a96f8b73c0c1c.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\d6\d6f8cabfde7b1f242bb9db40bcca112f
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\d6\d6f8cabfde7b1f242bb9db40bcca112f
-    projectPath: Library\metadata\d6\d6f8cabfde7b1f242bb9db40bcca112f
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\d6\d6f8cabfde7b1f242bb9db40bcca112f.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\d6\d6f8cabfde7b1f242bb9db40bcca112f.info
-    projectPath: Library\metadata\d6\d6f8cabfde7b1f242bb9db40bcca112f.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Library\metadata\ed\ed7c65975db5e2a48864ecd2e2941b0a.info
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\metadata\ed\ed7c65975db5e2a48864ecd2e2941b0a.info
-    projectPath: Library\metadata\ed\ed7c65975db5e2a48864ecd2e2941b0a.info
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\PlayerDataCache\Android\Data\5dd506795b79e5144a61af06187795a5
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\5dd506795b79e5144a61af06187795a5
-    projectPath: Library\PlayerDataCache\Android\Data\5dd506795b79e5144a61af06187795a5
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 5
+    workTreeStatus: 0
   - path: Library\PlayerDataCache\Android\Data\globalgamemanagers
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\globalgamemanagers
     projectPath: Library\PlayerDataCache\Android\Data\globalgamemanagers
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\PlayerDataCache\Android\Data\globalgamemanagers.assets
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\globalgamemanagers.assets
-    projectPath: Library\PlayerDataCache\Android\Data\globalgamemanagers.assets
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\PlayerDataCache\Android\Data\level1
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\level1
-    projectPath: Library\PlayerDataCache\Android\Data\level1
-    originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\PlayerDataCache\Android\Data\Managed\Assembly-CSharp.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\Managed\Assembly-CSharp.dll
     projectPath: Library\PlayerDataCache\Android\Data\Managed\Assembly-CSharp.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\PlayerDataCache\Android\Data\Managed\Assembly-CSharp-firstpass.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\Managed\Assembly-CSharp-firstpass.dll
     projectPath: Library\PlayerDataCache\Android\Data\Managed\Assembly-CSharp-firstpass.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\PlayerDataCache\Android\Data\Managed\Unity.Analytics.DataPrivacy.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\Managed\Unity.Analytics.DataPrivacy.dll
     projectPath: Library\PlayerDataCache\Android\Data\Managed\Unity.Analytics.DataPrivacy.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\PlayerDataCache\Android\Data\Managed\Unity.TextMeshPro.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\Managed\Unity.TextMeshPro.dll
     projectPath: Library\PlayerDataCache\Android\Data\Managed\Unity.TextMeshPro.dll
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\PlayerDataCache\Android\Data\sharedassets1.assets
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\Data\sharedassets1.assets
-    projectPath: Library\PlayerDataCache\Android\Data\sharedassets1.assets
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\PlayerDataCache\Android\ScriptLayoutHashes.txt
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\PlayerDataCache\Android\ScriptLayoutHashes.txt
-    projectPath: Library\PlayerDataCache\Android\ScriptLayoutHashes.txt
-    originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\ScriptAssemblies\Assembly-CSharp.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\ScriptAssemblies\Assembly-CSharp.pdb
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp.pdb
     projectPath: Library\ScriptAssemblies\Assembly-CSharp.pdb
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 5
+    workTreeStatus: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    originalPath: 
+    indexStatus: 5
+    workTreeStatus: 0
   - path: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 5
+    workTreeStatus: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.pdb
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.pdb
+    originalPath: 
+    indexStatus: 5
+    workTreeStatus: 0
   - path: Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
-  - path: Library\ScriptAssemblies\BuiltinAssemblies.stamp
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\BuiltinAssemblies.stamp
-    projectPath: Library\ScriptAssemblies\BuiltinAssemblies.stamp
+  - path: Library\ScriptAssemblies\Assembly-CSharp-firstpass.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Assembly-CSharp-firstpass.pdb
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-firstpass.pdb
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
+    indexStatus: 3
+    workTreeStatus: 3
   - path: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
     projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
+    workTreeStatus: 3
+  - path: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.pdb
+    projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.pdb
+    originalPath: 
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 5
+    workTreeStatus: 0
+  - path: Library\ScriptAssemblies\Unity.CollabProxy.Editor.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.CollabProxy.Editor.pdb
+    projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.pdb
+    originalPath: 
+    indexStatus: 5
+    workTreeStatus: 0
   - path: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 5
+    workTreeStatus: 0
+  - path: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.pdb
+    projectPath: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.pdb
+    originalPath: 
+    indexStatus: 5
+    workTreeStatus: 0
   - path: Library\ScriptAssemblies\Unity.TextMeshPro.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.TextMeshPro.dll
     projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.dll
     originalPath: 
-    indexStatus: 0
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\ShaderCache.db
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ShaderCache.db
-    projectPath: Library\ShaderCache.db
+    indexStatus: 5
+    workTreeStatus: 0
+  - path: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.pdb
+    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.pdb
     originalPath: 
-    indexStatus: 0
+    indexStatus: 5
+    workTreeStatus: 0
+  - path: Library\ScriptAssemblies\Unity.TextMeshPro.pdb
+    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\ScriptAssemblies\Unity.TextMeshPro.pdb
+    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.pdb
+    originalPath: 
+    indexStatus: 3
     workTreeStatus: 3
   - path: Library\shadercompiler-UnityShaderCompiler.exe0.log
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\shadercompiler-UnityShaderCompiler.exe0.log
@@ -1010,39 +466,9 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Library\shadercompiler-UnityShaderCompiler.exe1.log
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\shadercompiler-UnityShaderCompiler.exe1.log
-    projectPath: Library\shadercompiler-UnityShaderCompiler.exe1.log
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\shadercompiler-UnityShaderCompiler.exe2.log
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\shadercompiler-UnityShaderCompiler.exe2.log
-    projectPath: Library\shadercompiler-UnityShaderCompiler.exe2.log
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\shadercompiler-UnityShaderCompiler.exe3.log
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\shadercompiler-UnityShaderCompiler.exe3.log
-    projectPath: Library\shadercompiler-UnityShaderCompiler.exe3.log
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: Library\StateCache\Hierarchy\46b7a0-mainStage.json
     fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\StateCache\Hierarchy\46b7a0-mainStage.json
     projectPath: Library\StateCache\Hierarchy\46b7a0-mainStage.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Library\StateCache\SceneView\d69a67-mainStage.json
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\Library\StateCache\SceneView\d69a67-mainStage.json
-    projectPath: Library\StateCache\SceneView\d69a67-mainStage.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: ProjectSettings\EditorBuildSettings.asset
-    fullPath: C:\Users\barge\Desktop\unity create with code\Demo\ProjectSettings\EditorBuildSettings.asset
-    projectPath: ProjectSettings\EditorBuildSettings.asset
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
