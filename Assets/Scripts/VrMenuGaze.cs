@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class VrMenuGaze : MonoBehaviour
 {
@@ -34,7 +35,11 @@ public class VrMenuGaze : MonoBehaviour
     {
         gvrStatus = false;
         gvrTimer = 0;
-        imgGaze.fillAmount = 0;
+        try
+        {
+            imgGaze.fillAmount = 0;
+        }
+        catch (Exception e) { }
     }
 }
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2020-06-06T13:26:14.347+03:00
-  initializedAtString: 2020-06-06T13:26:14.347+03:00
+  lastUpdatedAtString: 2020-06-06T18:18:49.175+03:00
+  initializedAtString: 2020-06-06T18:18:49.175+03:00
   currentGitRemote:
     name: origin
     url: https://github.com/bargenish44/VR-Navigation-Game
