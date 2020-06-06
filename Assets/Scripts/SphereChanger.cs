@@ -17,12 +17,14 @@ public class SphereChanger : MonoBehaviour
     private string gameover = "GameOver";
     //This ensures that we don't mash to change spheres
     private string lastSphere;
+    private TextManager textsEditor;
 
 
 
     private void Start()
     {
         tripod = GameObject.Find("Tripod");
+        textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
     }
 
     private void Update()
@@ -43,14 +45,15 @@ public class SphereChanger : MonoBehaviour
     }
 
     //public void ChangeSphere(Transform nextSphere)
-    public void ChangeSphere(Transform nextSphere,float angle,string last)
+    public void ChangeSphere(Transform nextSphere, float angle, string last)
     {
-        if(first)
+        if (first)
         {
             first = false;
             currentSphere = nextSphere.name;
             Stats.Path.Add(nextSphere.gameObject.name);
             lastSphere = last;
+            textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
         }
         else
         {
@@ -58,23 +61,23 @@ public class SphereChanger : MonoBehaviour
             Stats.timer = 0;
             Stats.Path.Add(nextSphere.gameObject.name);
             string MSG = "CHANGE - THE PATH IS : ";
-            for (int i = 0; i < Stats.Path.Count-1; i++)
+            for (int i = 0; i < Stats.Path.Count - 1; i++)
             {
                 MSG += Stats.Path[i] + "THE Time IS : " + Stats.Times[i] + " , ";
             }
             MSG += Stats.Path[Stats.Path.Count - 1];
-            Debug.LogError(MSG);
+            Debug.Log(MSG);
         }
-        StartCoroutine(FadeCamera(nextSphere));
+        Vector3 v = transform.rotation.eulerAngles;
+        float newang = angle - 180;
+        //tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
+        //tripod.transform.SetParent(nextSphere.transform);
+
+        //tripod.transform.parent.rotation = Quaternion.Euler(0, newang, 0);
+        StartCoroutine(FadeCamera(nextSphere, newang));
         //Stats.Path.Add(nextSphere.gameObject.name);
         //Stats.Times.Add(Stats.timer);
 
-        Vector3 v = transform.rotation.eulerAngles;
-        float newang = angle  - 180;
-        //tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
-        //tripod.transform.SetParent(nextSphere.transform);
-        
-        tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
         //tripod.transform.LookAt(hotspot.transform);
         //tripod.transform.rotation.y += 180;
         //Debug.Log(tripod.transform.rotation.eulerAngles.ToString());
@@ -83,11 +86,17 @@ public class SphereChanger : MonoBehaviour
         if (nextSphere.name.Substring(6).Equals(lastSphere))
         {
             Stats.CreateCsvFile();
-            tripod.GetComponent<SceneCtrl>().ChangeScene(gameover);
+            StartCoroutine(DoneCoroutine());
         }
     }
 
-    IEnumerator FadeCamera(Transform nextSphere)
+    IEnumerator DoneCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        tripod.GetComponent<SceneCtrl>().ChangeScene(gameover);
+    }
+
+    IEnumerator FadeCamera(Transform nextSphere, float newAng)
     {
 
         //Ensure we have a fader object
@@ -98,7 +107,9 @@ public class SphereChanger : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
 
             //Change the camera position
-            Camera.main.transform.parent.position = nextSphere.position;
+            Camera.main.transform.position = nextSphere.position;
+            tripod.transform.rotation = Quaternion.Euler(0, newAng, 0);
+            textsEditor.ChangePic(nextSphere.name);
 
             //Fade the Quad object out 
             StartCoroutine(FadeOut(0.75f, m_Fader.GetComponent<Renderer>().material));
@@ -107,33 +118,40 @@ public class SphereChanger : MonoBehaviour
         else
         {
             //No fader, so just swap the camera position
-            //Camera.main.transform.parent.position = nextSphere.position;
             //tripod.transform.position = nextSphere.position;
-            tripod.transform.position = nextSphere.position;
+            //tripod.transform.position = nextSphere.position;
+            //Camera.main.transform.parent.rotation = Quaternion.Euler(0, newAng, 0);
+            //newAng = 180;
+            Camera.main.transform.parent.position = nextSphere.position;
+            Camera.main.transform.parent.rotation = nextSphere.rotation;
+            Camera.main.transform.parent.rotation = Quaternion.Euler(0, newAng, 0);
+            Camera.main.transform.parent.localRotation = Quaternion.Euler(0, newAng, 0);
+            tripod.transform.rotation = Quaternion.Euler(0, newAng, 0);
+            tripod.transform.localRotation = Quaternion.Euler(0, newAng, 0);
+            textsEditor.ChangePic(nextSphere.name);
+            //Debug.LogError("The angle is : " + newAng);
         }
     }
 
 
-        IEnumerator FadeOut(float time, Material mat)
+    IEnumerator FadeOut(float time, Material mat)
+    {
+        //While we are still visible, remove some of the alpha colour
+        while (mat.color.a > 0.0f)
         {
-            //While we are still visible, remove some of the alpha colour
-            while (mat.color.a > 0.0f)
-            {
-                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - (Time.deltaTime / time));
-                yield return null;
-            }
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - (Time.deltaTime / time));
+            yield return null;
         }
-
-
-        IEnumerator FadeIn(float time, Material mat)
-        {
-            //While we aren't fully visible, add some of the alpha colour
-            while (mat.color.a < 1.0f)
-            {
-                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a + (Time.deltaTime / time));
-                yield return null;
-            }
-        }
-
-
     }
+
+
+    IEnumerator FadeIn(float time, Material mat)
+    {
+        //While we aren't fully visible, add some of the alpha colour
+        while (mat.color.a < 1.0f)
+        {
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a + (Time.deltaTime / time));
+            yield return null;
+        }
+    }
+}

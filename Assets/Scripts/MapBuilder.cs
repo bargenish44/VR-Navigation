@@ -16,7 +16,6 @@ public class MapBuilder : MonoBehaviour
     private string hotspotName = "Textures/arrow";
     private string finalHotspotName = "Textures/FinalArrow";
     private string shaderStyle = "Insideout";
-    //private string shaderStyle = "new";
     private Sprite hotspot;
     private SpriteRenderer sr;
     private List<GameObject> sp = new List<GameObject>();
@@ -24,11 +23,12 @@ public class MapBuilder : MonoBehaviour
     private int fromPointID;
     private int toPointID;
     private float sphereScale = 3;
-    private float sphereScaleY = 1;
+    private float sphereScaleY = 1.2f;
     private Dictionary<(int,int),float> azimuts = new Dictionary<(int, int), float>();
     private GameObject tripod;
     private string lastSphere;
     private Sprite sprite;
+    private TextManager textsEditor;
 
     private void Start()
     {
@@ -36,13 +36,14 @@ public class MapBuilder : MonoBehaviour
     }
     public void BuildMap(Parser.Points points)
     {
+        textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
         sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
         hotspotPic = Resources.Load<Texture2D>(hotspotName);
         FinalHotspotPic = Resources.Load<Texture2D>(finalHotspotName);
-        for (int i = 0; i < points.points.Length; i++)
+        for (int i = 0; i < points.points.Count; i++)
         {
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.transform.position = new Vector3((sphereScale + 0.5f) * i, 0, 0);
+            sphere.transform.position = new Vector3(0, (sphereScale + 0.5f) * i, 0);
             sphere.name += points.points[i].id;
             sphere.transform.localScale = new Vector3(sphereScale, sphereScaleY, sphereScale);
             sphere.gameObject.GetComponent<SphereCollider>().enabled = false;
@@ -56,11 +57,12 @@ public class MapBuilder : MonoBehaviour
             renderer.material.mainTexture = picture;
             //renderer.material.mainTextureScale = new Vector2(1, 3); // tiling
             sp.Add(sphere);
+            textsEditor.texts.Add(sphere.name, points.points[i].OptionalText);
         }
-        lastSphere = points.points[points.points.Length - 1].id+"";
-        for (int i = 0; i < points.points.Length; i++)
+        lastSphere = points.points[points.points.Count - 1].id+"";
+        for (int i = 0; i < points.points.Count; i++)
         {
-            for (int j = 0; j < points.points[i].Neighbors.Length; j++)
+            for (int j = 0; j < points.points[i].Neighbors.Count; j++)
             {
                 fromPointID = points.points[i].id;
                 toPointID = points.points[i].Neighbors[j].PointID;
@@ -108,10 +110,13 @@ public class MapBuilder : MonoBehaviour
         try
         {
             string fromPoint = data.lastPress.name.Substring(7);
+        }catch (Exception a) { Debug.LogError("lastpree problem!!!!\t" + a.StackTrace); 
+        }
+        try {
             azimuth = azimuts[(Int32.Parse(data.pointerPressRaycast.gameObject.name.Substring(7)), Int32.Parse(data.lastPress.name.Substring(7)))];
             //Debug.Log("the angle from : " + data.pointerPressRaycast.gameObject.name.Substring(7) + " to : " + data.lastPress.name.Substring(7) + " is : " + azimuth);
         }
-        catch (Exception e) { Debug.LogError(e.StackTrace); }
+        catch (Exception e) { Debug.LogError("azimuth problem : \t" + e.StackTrace); }
         sphereChanger.ChangeSphere(wantedSphere.transform,azimuth,lastSphere);
     }
     private void OnPointerEnterDelegate(PointerEventData data)
@@ -124,8 +129,10 @@ public class MapBuilder : MonoBehaviour
         if (fromPoint.Equals("")) { fromPoint = "1"; azimuth = 0; }
         else
         {
-            azimuth = azimuts[(Int32.Parse(requestedID), Int32.Parse(fromPoint))];
+            //azimuth = azimuts[(Int32.Parse(requestedID), Int32.Parse(fromPoint))];
+            azimuth = azimuts[(Int32.Parse(fromPoint), Int32.Parse(requestedID))];
             //Debug.Log("the angle from : " + requestedID + " to : " + fromPoint + " is : " + azimuth);
+            //Debug.Log("the angle from : " + fromPoint + " to : " + requestedID + " is : " + azimuth);
         }
         //GameObject wantedHotspot = GameObject.Find("Sphere" + requestedID).transform.Find("hotspot" + fromPoint).gameObject;
         //Debug.LogError(data);

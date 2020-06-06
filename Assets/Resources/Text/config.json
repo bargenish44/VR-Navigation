@@ -1,35 +1,69 @@
 {
-    "Points":[
-        {
-            "id":1,
-            "Picture":"Textures/new/1",
-            "Neighbors":
-            [
-                {"PointID":2,
-                "Azimut":135},
-                {"PointID":3,
-                "Azimut":-170},
-				{"PointID":4,
-                "Azimut":-100},
-                {"PointID":5,
-                "Azimut":25}
-            ]
-        },
-        {
-            "id":2,
-            "Picture":"Textures/new/2",
-            "Neighbors":
-            [
-                {"PointID":1,
-                "Azimut":-100},
-                {"PointID":3,
-                "Azimut":155},
-				{"PointID":4,
-                "Azimut":-175},
-				{"PointID":42,
-                "Azimut":5}
-            ]
-        },
+	"Points": [{
+			"id": 1,
+			"Picture": "Textures/new/1",
+			"Neighbors": [{
+					"PointID": 2,
+					"Azimut": 135
+				},
+				{
+					"PointID": 3,
+					"Azimut": -170
+				},
+				{
+					"PointID": 4,
+					"Azimut": -100
+				},
+				{
+					"PointID": 5,
+					"Azimut": 25
+				}
+			],
+			"OptionalText": [{
+					"text": "this is me again my dur is 10 this time and i showed after 8 sec",
+					"DurationInSeconds": 10,
+					"whenToDisplay": 8
+				},
+				{
+					"text": "id 1 dur is 20, i played after 4 sec",
+					"DurationInSeconds": 20,
+					"whenToDisplay": 4
+				}	
+			]
+		},
+		{
+			"id": 2,
+			"Picture": "Textures/new/2",
+			"Neighbors": [{
+					"PointID": 1,
+					"Azimut": -100
+				},
+				{
+					"PointID": 3,
+					"Azimut": 155
+				},
+				{
+					"PointID": 4,
+					"Azimut": -175
+				},
+				{
+					"PointID": 42,
+					"Azimut": 5
+				}
+			],
+			"OptionalText": [{
+					"text": "me again id 2 my dur is 6 showed after 7 sec",
+					"DurationInSeconds": 6,
+					"whenToDisplay": 7
+				},
+				{
+					"text": "id 2 and my dur is 3, played after 5 sec",
+					"DurationInSeconds": 3,
+					"whenToDisplay": 5
+				}
+					
+			]
+		},
         {
             "id":3,
             "Picture":"Textures/new/3",
@@ -568,14 +602,6 @@
             "Picture":"Textures/new/42",
             "Neighbors":
             [
-                {"PointID":2,
-                "Azimut":15},
-                {"PointID":39,
-                "Azimut":150},
-				{"PointID":40,
-                "Azimut":-165},
-				{"PointID":41,
-                "Azimut":-90}
             ]
         }
     ]
