@@ -3,8 +3,12 @@ package Logic;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFileChooser;
+
+import org.json.simple.parser.ParseException;
+
 import Persistance.JSONHandler;
 
 public class Map {
@@ -13,9 +17,13 @@ public class Map {
 	public HashMap<Integer, Point> getMap() {
 		return map;
 	}
-	
+
 	public void AddPoint(String url) {
 		Point temp = new Point(url);
+		map.put(temp.getId(), temp);
+	}
+	public void AddPointLoad(String url,int id) {
+		Point temp = new Point(url,id);
 		map.put(temp.getId(), temp);
 	}
 	public void RemovePoint(int id) {
@@ -73,15 +81,27 @@ public class Map {
 		from_Point.EditOptionalText(textId, text, dur, when);
 	}
 
-	public void ExportJSON(String path) throws UnsupportedEncodingException, FileNotFoundException, IOException {
-		JSONHandler.Save(path, map);
+	public void ExportJSON(String path,boolean ans) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+		JSONHandler.Save(path, map, ans);
 	}
-	
-	public Map ImportJSON(String path) throws IOException { 
+
+	public Map ImportJSON(String path) throws IOException, ParseException { 
 		return JSONHandler.Load(path);
 	}
-	
+
 	public void ClearMap() {
 		map.clear();
+	}
+
+	public ArrayList<Integer> GetTextsID(){
+		ArrayList<Integer> textsID = new ArrayList<>();
+		for(int pID : map.keySet()) {
+			Point p = map.get(pID);
+			for(int tID : p.getOptionalTexts().keySet()) {
+				Optionaltext ot = p.getOptionalTexts().get(tID);
+				textsID.add(ot.getId());
+			}
+		}
+		return textsID;
 	}
 }

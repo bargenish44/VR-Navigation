@@ -1,5 +1,6 @@
 package Logic;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Point {
@@ -27,9 +28,17 @@ public class Point {
 	public HashMap<Integer,Optionaltext> getOptionalTexts() {
 		return OptionalTexts;
 	}
-	
+
 	public Point(String pic) {
 		id = (++counter);
+		Picture = pic;
+		Neighbors = new HashMap<>();
+		OptionalTexts = new HashMap<>();
+	}
+	public Point(String pic, int ID) { // For Json loader
+		this.id = ID;
+		if(counter<ID) 
+			counter = ID;
 		Picture = pic;
 		Neighbors = new HashMap<>();
 		OptionalTexts = new HashMap<>();
@@ -59,6 +68,7 @@ public class Point {
 		return temp.getId();
 	}
 
+
 	public void EditOptionalText(int textId, String text, float dur, float when) {
 		if(!OptionalTexts.containsKey(textId))
 			throw new IllegalArgumentException("text doesn't exists");
@@ -72,9 +82,15 @@ public class Point {
 			throw new IllegalArgumentException("text doesn't exists");
 		OptionalTexts.remove(id);
 	}
-	public String toString()
+	public String toJson(boolean ans)
 	{
-		String newPath = Picture.replaceAll("\\\\", "/");
+		String newPath;
+		String PhonePath = "/storage/emulated/0/Android/data/com.Ariel.VrNavigation/files/Pictures/";
+		String[] pic = Picture.split("\\\\");
+		String picName = pic[pic.length-1];
+		if(!ans) // phone version
+			newPath = PhonePath+picName;
+		else newPath = Picture.replaceAll("\\\\", "/");
 		String s = "{ \"id\" :" + id + ",\n\"Picture\" : \"" +newPath + "\",\n\"Neighbors\" : \n[";
 		for(int i : Neighbors.keySet()) {
 			s += Neighbors.get(i).toString() + ",";

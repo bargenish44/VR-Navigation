@@ -13,7 +13,7 @@ public class Optionaltext {
 		DurationInSeconds = dur;
 		whenToDisplay = when;
 	}
-	
+
 	public String getText() {
 		return text;
 	}
@@ -40,7 +40,7 @@ public class Optionaltext {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String toString()
 	{
 		String s = "{\"text\" : \"" + text + "\", \n\"DurationInSeconds\" : " + DurationInSeconds + ", \n\"whenToDisplay\" : " + whenToDisplay + "}";

@@ -5,7 +5,7 @@ public class Neighbor {
 	private int FromPointID;
 	private int ToPointID;
 	private float Azimut;
-	
+
 	public Neighbor(int from, int to , float az) {
 		FromPointID = from;
 		ToPointID = to;

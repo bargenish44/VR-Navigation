@@ -19,7 +19,7 @@ import Logic.Optionaltext;
 
 public class MyFrame implements ActionListener {
 
-	private JMenuItem clear, load, how_to_use, Export_Json, addPicture, removePicture, editPicture, addNeighbor, 
+	private JMenuItem clear, load, about, Export_Json, addPicture, removePicture, editPicture, addNeighbor, 
 	removeNeighbor, editNeighbor, addText, editText, removeText;
 	private JMenuBar menubar;
 	private JMenu menu, menu2, menu3;
@@ -54,6 +54,7 @@ public class MyFrame implements ActionListener {
 	private String editNeiStr = "edit neighbor";
 	private String addNeiStr = "add neighbor";
 	private int neiToEdit = -1;
+	private String computerOption = "Computer", phoneOption = "Phone";
 
 	public static void main(String[] args) {
 		new MyFrame();
@@ -69,9 +70,9 @@ public class MyFrame implements ActionListener {
 			menubar = new JMenuBar();
 			menu = new JMenu("Help");
 			menubar.add(menu);
-			how_to_use = new JMenuItem("How to use");
-			how_to_use.addActionListener(this);
-			menu.add(how_to_use);
+			about = new JMenuItem("About");
+			about.addActionListener(this);
+			menu.add(about);
 			menu2 = new JMenu("Option");
 			load = new JMenuItem("Load");
 			load.addActionListener(this);
@@ -142,7 +143,6 @@ public class MyFrame implements ActionListener {
 					if (!e.getValueIsAdjusting()) {
 						try {
 							selectedTextIndex = textsIDs.get(textList.getSelectedIndex());
-							System.out.println("ID is : "+ selectedTextIndex);
 						} catch (Exception e1) {
 						}
 					}
@@ -282,37 +282,48 @@ public class MyFrame implements ActionListener {
 	}
 
 	private void updateDisplay() {
-		if(listChanged) {
-			picturesLabels = new ArrayList<>();
-			for(int key : map.getMap().keySet()) {
-				picturesLabels.add(PicName+key);
+		try {
+			if(listChanged) {
+				picturesLabels = new ArrayList<>();
+				for(int key : map.getMap().keySet()) {
+					picturesLabels.add(PicName+key);
+				}
+				listModel.clear();
+				for(int i=0;i<picturesLabels.size();i++) {
+					listModel.addElement(picturesLabels.get(i));
+				}
+				listChanged = false;
 			}
-			listModel.clear();
-			for(int i=0;i<picturesLabels.size();i++) {
-				listModel.addElement(picturesLabels.get(i));
+			if(TextListChanged) {
+				textsLabels= new ArrayList<>();
+				for (int text : map.getMap().get(selectedImageIndex).getOptionalTexts().keySet()) {
+					Optionaltext tmp = map.getMap().get(selectedImageIndex).getOptionalTexts().get(text);
+					textsLabels.add(textName + tmp.getText() + "\nDuration : "+ tmp.getDurationInSeconds()+ "\nWhen : "+tmp.getWhenToDisplay());
+				}
+				TextListModel.clear();
+				for(int i=0;i<textsLabels.size();i++) {
+					TextListModel.addElement(textsLabels.get(i));
+				}
+				TextListChanged = false;
 			}
-			listChanged = false;
-		}
-		if(TextListChanged) {
-			textsLabels= new ArrayList<>();
-			for (int text : map.getMap().get(selectedImageIndex).getOptionalTexts().keySet()) {
-				Optionaltext tmp = map.getMap().get(selectedImageIndex).getOptionalTexts().get(text);
-				textsLabels.add(textName + tmp.getText() + "\nDuration : "+ tmp.getDurationInSeconds()+ "\nWhen : "+tmp.getWhenToDisplay());
-			}
-			TextListModel.clear();
-			for(int i=0;i<textsLabels.size();i++) {
-				TextListModel.addElement(textsLabels.get(i));
-			}
-			TextListChanged = false;
-		}
+		}catch (NullPointerException e) {}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		//Help Button
-		if (e.getSource() == how_to_use) {
-			JOptionPane.showMessageDialog(null,"" ,"How to use", JOptionPane.PLAIN_MESSAGE); //TODO: add help message
+		if (e.getSource() == about) {
+			JOptionPane.showMessageDialog(null,"First, you have to add all the points,\r\n" + 
+					"you also can remove points, edit points (change the point picture path).\r\n" + 
+					"Then you can connect pictures crossover by add picture and click on the crossover spot,\r\n" + 
+					"or edit a neighbor's crossover spot, or delete neighbor.\r\n" + 
+					"Also, you have the option to add text that will show in the navigation system,\r\n" + 
+					"edit text (edit text/duration/when to display) or even delete a text.\r\n" + 
+					"After you did create the map,\r\n" + 
+					"You can export the JSON to phone version (with phone paths),\r\n" + 
+					"or to a computer version that allows you to edit the JSON.\r\n" + 
+					"Also, you have the option to load an existing JSON or clear your map." ,"About", JOptionPane.PLAIN_MESSAGE);
 			choose = "";
 		}
 
@@ -325,10 +336,14 @@ public class MyFrame implements ActionListener {
 				try {
 					map.ClearMap();
 					listModel.clear();
+					TextListModel.clear();
 					img = null;
 					panel.setPic(img);
-					map.ImportJSON(fileChooser.getSelectedFile().getAbsolutePath());
-				} catch (IOException e1) {
+					map = map.ImportJSON(fileChooser.getSelectedFile().getAbsolutePath());
+					textsIDs = map.GetTextsID();
+					listChanged = true;
+					TextListChanged = true;
+				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "Error occurred during import JSON");
 				}
 			choose = "";
@@ -342,8 +357,17 @@ public class MyFrame implements ActionListener {
 			int returnValue = fileChooser.showSaveDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION)
 				try {
-					map.ExportJSON(fileChooser.getSelectedFile().getAbsolutePath()); 
+					boolean ans = true;
+					String[] options = new String[] {computerOption, phoneOption};
+					int response = JOptionPane.showOptionDialog(null, "Choose path version", "Export JSON", 
+							JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+							null, options, options[0]);
+					if(options[response].equals(phoneOption))
+						ans = false;
+					map.ExportJSON(fileChooser.getSelectedFile().getAbsolutePath(),ans); 
 					JOptionPane.showMessageDialog(null, "File saved at : " + fileChooser.getSelectedFile().getAbsolutePath());
+					if(!ans)
+						JOptionPane.showMessageDialog(null, "Copy the pictures to : /storage/emulated/0/Android/data/com.Ariel.VrNavigation/files/Pictures/");
 				} catch (IOException e1) {
 					JOptionPane.showMessageDialog(null, "Error occurred during export JSON");
 				}
@@ -353,6 +377,7 @@ public class MyFrame implements ActionListener {
 		if (e.getSource() == clear) {
 			map.ClearMap();
 			listModel.clear();
+			TextListModel.clear();
 			choose = "";
 			img = null;
 			panel.setPic(img);
@@ -421,7 +446,7 @@ public class MyFrame implements ActionListener {
 
 		//Text Manager
 		//Add Text
-		if(e.getSource() == addText) { // create a new temp text, added him and insert into textIDs ;
+		if(e.getSource() == addText) { 
 			choose = "";
 			try {
 				String text = JOptionPane.showInputDialog("Insert text :");
@@ -437,9 +462,9 @@ public class MyFrame implements ActionListener {
 		if(e.getSource() == removeText) {
 			choose = "";
 			try {
-			map.RemoveOptionalText(selectedImageIndex, selectedTextIndex);
-			textsIDs.remove(textList.getSelectedIndex());
-			TextListChanged = true; // update list
+				map.RemoveOptionalText(selectedImageIndex, selectedTextIndex);
+				textsIDs.remove(textList.getSelectedIndex());
+				TextListChanged = true; // update list
 			}catch (IllegalArgumentException ex) {JOptionPane.showMessageDialog(null, ex.getMessage());}
 		}
 		//Edit Text
@@ -454,7 +479,7 @@ public class MyFrame implements ActionListener {
 			catch (IllegalArgumentException ex) {JOptionPane.showMessageDialog(null, ex.getMessage());}
 		}
 
-			updateDisplay();
-			frame.repaint();
+		updateDisplay();
+		frame.repaint();
 	}
 }
