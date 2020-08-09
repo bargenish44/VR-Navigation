@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 987ace8468e3f3442b33d16524c62ae3
+  - enabled: 1
+    path: Assets/Scenes/InsertJson.unity
+    guid: 1b8c45ab2771bc34e8230f2941bb4bd6
   m_configObjects: {}

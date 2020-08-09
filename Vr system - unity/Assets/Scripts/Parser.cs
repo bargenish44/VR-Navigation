@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Parser
 {
@@ -69,9 +70,14 @@ public class Parser
 
     public Points DeserializeJson(string JsonText)
     {
-        Points points = JsonConvert.DeserializeObject<Points>(JsonText);
-        SortByText(ref points);
-        return points;
+        try
+        {
+            Points points = JsonConvert.DeserializeObject<Points>(JsonText);
+            SortByText(ref points);
+            return points;
+        }
+        catch (Exception e) { SceneManager.LoadScene("InsertJson"); }
+        return null;
     }
 
     private void SortByText(ref Points p)

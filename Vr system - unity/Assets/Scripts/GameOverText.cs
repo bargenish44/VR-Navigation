@@ -7,9 +7,17 @@ public class GameOverText : MonoBehaviour
 {
     [SerializeField] private string path = "";
     public TextMeshProUGUI text;
+    [SerializeField] private bool json = false;
     void Start()
     {
-        if (path.Equals("")) path = "The path of the csv is : \n" + Application.persistentDataPath + "/stats.csv";
+        if (!json)
+        {
+            if (path.Equals("")) path = "The path of the csv is : \n" + Application.persistentDataPath + "/stats.csv";
+        }
+        else
+        {
+            if (path.Equals("")) path = "Please insert a valid json, make sure it is called config.json to : \n" + Application.persistentDataPath + "/Json";
+        }
         text.text = path;
     }
 }

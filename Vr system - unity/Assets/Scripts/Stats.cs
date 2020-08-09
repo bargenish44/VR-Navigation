@@ -4,20 +4,21 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public static class Stats { 
+public class Stats { 
     public static ArrayList Path = new ArrayList();
     public static ArrayList Times = new ArrayList();
     public static float timer = 0;
     public static void CreateCsvFile()
     {
         Times.Add(timer);
-        string data=System.DateTime.Now+ " -\n";
+        string data=System.DateTime.Now+ ",";
         for (int i = 0; i < Path.Count;i++)
         {
-            data += Path[i]+" : Time - "+Times[i]+". ";
+            data += Path[i]+" . Time - "+Times[i]+ " seconds.,";
         }
         try
         {
+            data = data.Replace("Sphere", "PointID : ");
             string path = Application.persistentDataPath + "/stats.csv";
             if (!File.Exists(path))
             {

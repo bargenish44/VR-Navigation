@@ -24,17 +24,23 @@ public class VrMenuGaze : MonoBehaviour
             gvrTimer += Time.deltaTime;
             imgGaze.fillAmount = gvrTimer / totalTime;
         }
-        if (gvrTimer >= totalTime) GVRClick.Invoke();
+        if (gvrTimer >= totalTime)
+        {
+            GVRClick.Invoke();
+            GVROff();
+        }
     }
 
     public void GVRon()
     {
         gvrStatus = true;
+        Debug.Log("On");
     }
     public void GVROff()
     {
         gvrStatus = false;
         gvrTimer = 0;
+        Debug.Log("Off");
         try
         {
             imgGaze.fillAmount = 0;
@@ -42,4 +48,3 @@ public class VrMenuGaze : MonoBehaviour
         catch (Exception e) { }
     }
 }
-

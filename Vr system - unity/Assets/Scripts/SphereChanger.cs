@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class SphereChanger : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class SphereChanger : MonoBehaviour
     //This ensures that we don't mash to change spheres
     private string lastSphere;
     private TextManager textsEditor;
+    public bool DebugOn;
 
 
 
@@ -25,10 +28,15 @@ public class SphereChanger : MonoBehaviour
     {
         tripod = GameObject.Find("Tripod");
         textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
+        try
+        {
+            DebugOn = GameObject.Find("DebugMode").GetComponent<debug>().DebugOn;
+        }
+        catch (NullReferenceException e) { DebugOn = false; }
     }
 
     private void Update()
-    {
+    { 
         Stats.timer += Time.deltaTime;
     }
     void Awake()
@@ -57,7 +65,7 @@ public class SphereChanger : MonoBehaviour
         }
         else
         {
-            Stats.Times.Add(Stats.timer);
+            Stats.Times.Add(Mathf.Round(Stats.timer * 100f) / 100f);
             Stats.timer = 0;
             Stats.Path.Add(nextSphere.gameObject.name);
             string MSG = "CHANGE - THE PATH IS : ";
@@ -66,13 +74,9 @@ public class SphereChanger : MonoBehaviour
                 MSG += Stats.Path[i] + "THE Time IS : " + Stats.Times[i] + " , ";
             }
             MSG += Stats.Path[Stats.Path.Count - 1];
-            Debug.Log(MSG);
         }
         Vector3 v = transform.rotation.eulerAngles;
-        float newang = angle - 180;
-        //tripod.transform.rotation = Quaternion.Euler(0, newang, 0);
-        //tripod.transform.SetParent(nextSphere.transform);
-
+        float newang = angle;
         //tripod.transform.parent.rotation = Quaternion.Euler(0, newang, 0);
         StartCoroutine(FadeCamera(nextSphere, newang));
         //Stats.Path.Add(nextSphere.gameObject.name);
@@ -117,19 +121,17 @@ public class SphereChanger : MonoBehaviour
         }
         else
         {
-            //No fader, so just swap the camera position
-            //tripod.transform.position = nextSphere.position;
-            //tripod.transform.position = nextSphere.position;
-            //Camera.main.transform.parent.rotation = Quaternion.Euler(0, newAng, 0);
-            //newAng = 180;
-            Camera.main.transform.parent.position = nextSphere.position;
-            Camera.main.transform.parent.rotation = nextSphere.rotation;
-            Camera.main.transform.parent.rotation = Quaternion.Euler(0, newAng, 0);
-            Camera.main.transform.parent.localRotation = Quaternion.Euler(0, newAng, 0);
-            tripod.transform.rotation = Quaternion.Euler(0, newAng, 0);
-            tripod.transform.localRotation = Quaternion.Euler(0, newAng, 0);
+            Debug.Log(newAng);
+            string debug = "wanted azimuth is : " + newAng+"\n";
+            tripod.transform.position = nextSphere.position;
+            tripod.transform.localEulerAngles = new Vector3(0, newAng, 0);
+            Debug.Log(tripod.transform.rotation);
+            debug += "new rotation is : " + tripod.transform.eulerAngles.y+"\n";
+            debug += "new tripod rotation is : "+ tripod.transform.rotation;
+            Debug.Log(DebugOn);
+            if(DebugOn)
+                tripod.transform.Find("Main Camera").Find("Canvas").Find("Debug").GetComponentInChildren<TextMeshProUGUI>().SetText(debug);
             textsEditor.ChangePic(nextSphere.name);
-            //Debug.LogError("The angle is : " + newAng);
         }
     }
 
