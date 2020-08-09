@@ -340,6 +340,7 @@ public class MyFrame implements ActionListener {
 					img = null;
 					panel.setPic(img);
 					map = map.ImportJSON(fileChooser.getSelectedFile().getAbsolutePath());
+					textsIDs.clear();
 					textsIDs = map.GetTextsID();
 					listChanged = true;
 					TextListChanged = true;
@@ -381,6 +382,7 @@ public class MyFrame implements ActionListener {
 			choose = "";
 			img = null;
 			panel.setPic(img);
+			textsIDs.clear();
 		}
 
 		//--Add/Remove Menu--
