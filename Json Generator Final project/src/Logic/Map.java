@@ -13,18 +13,25 @@ import Persistance.JSONHandler;
 
 public class Map {
 	private HashMap<Integer,Point> map = new HashMap<>();  // key = id , val = Point;
+	private HashMap<String,Point> nickToPoint = new HashMap<>();	// key = nickName , val = Point;
 
 	public HashMap<Integer, Point> getMap() {
 		return map;
 	}
 
+	public HashMap<String,Point> getNickToPoint() {
+		return nickToPoint;
+	}
+
 	public void AddPoint(String url) {
 		Point temp = new Point(url);
 		map.put(temp.getId(), temp);
+		nickToPoint.put(temp.getNickName(), temp);
 	}
 	public void AddPointLoad(String url,int id) {
 		Point temp = new Point(url,id);
 		map.put(temp.getId(), temp);
+		nickToPoint.put(temp.getNickName(), temp);
 	}
 	public void RemovePoint(int id) {
 		if(map.get(id) == null) throw new IllegalArgumentException("Point doesn't exist");
@@ -34,11 +41,16 @@ public class Map {
 				h.RemoveNeighbor(id);
 			}catch (IllegalArgumentException i) {}
 		}
+		nickToPoint.remove(map.get(id).getNickName());
 		map.remove(id);
 	}
 	public void EditPoint(int id , String newUrl) {
 		if(map.get(id) == null) throw new IllegalArgumentException("Point doesn't exist");
 		map.get(id).setPicture(newUrl);
+		String[] path = newUrl.split("\\\\");
+		nickToPoint.put(path[path.length-1], map.get(id));
+		nickToPoint.remove(map.get(id).getNickName());
+		map.get(id).setNickName(path[path.length-1]);
 	}
 	public void AddNeighbor(int from,int to,float azimut) {
 		Point from_Point = map.get(from);
@@ -81,8 +93,8 @@ public class Map {
 		from_Point.EditOptionalText(textId, text, dur, when);
 	}
 
-	public void ExportJSON(String path,boolean ans) throws UnsupportedEncodingException, FileNotFoundException, IOException {
-		JSONHandler.Save(path, map, ans);
+	public void ExportJSON(String path,boolean ans, String projName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+		JSONHandler.Save(path, map, ans, projName);
 	}
 
 	public Map ImportJSON(String path) throws IOException, ParseException { 
@@ -91,6 +103,7 @@ public class Map {
 
 	public void ClearMap() {
 		map.clear();
+		nickToPoint.clear();
 	}
 
 	public ArrayList<Integer> GetTextsID(){

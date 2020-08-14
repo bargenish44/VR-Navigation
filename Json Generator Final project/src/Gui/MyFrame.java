@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
@@ -123,7 +125,8 @@ public class MyFrame implements ActionListener {
 				public void valueChanged(ListSelectionEvent e) {
 					if (!e.getValueIsAdjusting()) {
 						try {
-							selectedImageIndex = Integer.parseInt(picturesLabels.get(list.getSelectedIndex()).substring(PicName.length()));
+							selectedImageIndex = map.getNickToPoint().get(picturesLabels.get(list.getSelectedIndex())).getId();
+							// selectedImageIndex = Integer.parseInt(picturesLabels.get(list.getSelectedIndex()).substring(PicName.length()));
 							if(! (selectedImageIndex < 0 || map.getMap().get(selectedImageIndex) == null))
 								img = ImageIO.read(new File(map.getMap().get(selectedImageIndex).getPicture()));
 							panel.setPic(img);
@@ -286,7 +289,7 @@ public class MyFrame implements ActionListener {
 			if(listChanged) {
 				picturesLabels = new ArrayList<>();
 				for(int key : map.getMap().keySet()) {
-					picturesLabels.add(PicName+key);
+					picturesLabels.add(map.getMap().get(key).getNickName());
 				}
 				listModel.clear();
 				for(int i=0;i<picturesLabels.size();i++) {
@@ -365,7 +368,8 @@ public class MyFrame implements ActionListener {
 							null, options, options[0]);
 					if(options[response].equals(phoneOption))
 						ans = false;
-					map.ExportJSON(fileChooser.getSelectedFile().getAbsolutePath(),ans); 
+					String projName = JOptionPane.showInputDialog("Insert project name :");
+					map.ExportJSON(fileChooser.getSelectedFile().getAbsolutePath(),ans,projName); 
 					JOptionPane.showMessageDialog(null, "File saved at : " + fileChooser.getSelectedFile().getAbsolutePath());
 					if(!ans)
 						JOptionPane.showMessageDialog(null, "Copy the pictures to : /storage/emulated/0/Android/data/com.Ariel.VrNavigation/files/Pictures/");
@@ -390,9 +394,13 @@ public class MyFrame implements ActionListener {
 		//Add Picture
 		if (e.getSource() == addPicture) {
 			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setMultiSelectionEnabled(true);
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				map.AddPoint(fileChooser.getSelectedFile().getAbsolutePath());
+				File[] files = fileChooser.getSelectedFiles();
+				for(File f : files) {
+					map.AddPoint(f.getAbsolutePath());
+				}
 			}
 			choose = "";
 			listChanged = true;
@@ -415,6 +423,7 @@ public class MyFrame implements ActionListener {
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				try {
 					map.EditPoint(selectedImageIndex,fileChooser.getSelectedFile().getAbsolutePath());
+					listChanged = true;
 				}catch (IllegalArgumentException e2) {JOptionPane.showMessageDialog(null, e2.getMessage());}
 			}
 			choose = "";

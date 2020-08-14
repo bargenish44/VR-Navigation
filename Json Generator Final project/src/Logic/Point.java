@@ -9,6 +9,7 @@ public class Point {
 	private String Picture;
 	private HashMap<Integer, Neighbor> Neighbors;
 	private HashMap<Integer,Optionaltext> OptionalTexts;
+	private String nickName = "";
 
 	public int getId() {
 		return id;
@@ -29,11 +30,19 @@ public class Point {
 		return OptionalTexts;
 	}
 
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 	public Point(String pic) {
 		id = (++counter);
 		Picture = pic;
 		Neighbors = new HashMap<>();
 		OptionalTexts = new HashMap<>();
+		String[] path = Picture.split("\\\\");
+		nickName = path[path.length-1];
 	}
 	public Point(String pic, int ID) { // For Json loader
 		this.id = ID;
@@ -42,6 +51,8 @@ public class Point {
 		Picture = pic;
 		Neighbors = new HashMap<>();
 		OptionalTexts = new HashMap<>();
+		String[] path = Picture.split("/");
+		nickName = path[path.length-1];
 	}
 
 	public void AddNeighbor(int Neighbor_Id, float Azimut) {

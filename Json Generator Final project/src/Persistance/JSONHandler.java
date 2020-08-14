@@ -17,10 +17,10 @@ import Logic.Map;
 import Logic.Point;
 
 public class JSONHandler {
-	public static void Save(String Path,HashMap<Integer,Point> map, boolean ans) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+	public static void Save(String Path,HashMap<Integer,Point> map, boolean ans, String projName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
 		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(Path), "utf-8"))) {
-			writer.write(CreateJSON(map, ans));
+			writer.write(CreateJSON(map, ans,projName));
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	public static Map Load(String path) throws IOException, ParseException { // DeSearlize json
@@ -35,13 +35,14 @@ public class JSONHandler {
 			String pic = (String)pointJson.get("Picture");
 			map.AddPointLoad(pic, (int)id);
 			JSONArray texts = (JSONArray) pointJson.get("OptionalText");
+			try {
 			for(Object t : texts) {
 				JSONObject OpText = (JSONObject)t;
-				String text =  (String)OpText.get("text"); 
-				double dur = (double)OpText.get("DurationInSeconds");
+				String text =  (String)OpText.get("text");
+				double dur = (double) OpText.get("DurationInSeconds");
 				double when = (double)OpText.get("whenToDisplay");
 				map.AddOptionalText((int)id, text, (float)dur, (float)when);
-			}
+			}}catch (NullPointerException e) {}
 		}
 		for(Object point : points) { // add neighbors
 			JSONObject pointJson = (JSONObject)point;
@@ -57,8 +58,9 @@ public class JSONHandler {
 		return map;
 	}
 
-	private static String CreateJSON(HashMap<Integer,Point> map, boolean ans) { // create json stracture
+	private static String CreateJSON(HashMap<Integer,Point> map, boolean ans, String projName) { // create json stracture
 		String str = "{\n";
+		str += "\"Project Name\": \"" +projName + "\",\n";
 		str += "\"Points\": [";
 		for(int i : map.keySet()) {
 			str += map.get(i).toJson(ans) + ",";
