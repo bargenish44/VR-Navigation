@@ -17,10 +17,12 @@ import Logic.Map;
 import Logic.Point;
 
 public class JSONHandler {
-	public static void Save(String Path,HashMap<Integer,Point> map, boolean ans, String projName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+	public static void Save(String Path,HashMap<Integer,Point> map, boolean ans, String projName, String tranImg, String finalTranImg) 
+			throws UnsupportedEncodingException, FileNotFoundException, IOException {
+		
 		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(Path), "utf-8"))) {
-			writer.write(CreateJSON(map, ans,projName));
+			writer.write(CreateJSON(map, ans,projName,tranImg,finalTranImg));
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	public static Map Load(String path) throws IOException, ParseException { // DeSearlize json
@@ -28,6 +30,10 @@ public class JSONHandler {
 		String fileContent =  new String(Files.readAllBytes(Paths.get(path)));
 		JSONParser parser = new JSONParser();
 		JSONObject fileJson = (JSONObject) parser.parse(fileContent);
+		String tranImg = (String)fileJson.get("TransitionImage");
+		String FinaltranImg = (String)fileJson.get("FinalTransitionImage");
+		map.setTransitionImg(tranImg);
+		map.setFinalTransitionImg(FinaltranImg);
 		JSONArray points = (JSONArray) fileJson.get("Points");
 		for(Object point : points) {
 			JSONObject pointJson = (JSONObject)point;
@@ -58,9 +64,17 @@ public class JSONHandler {
 		return map;
 	}
 
-	private static String CreateJSON(HashMap<Integer,Point> map, boolean ans, String projName) { // create json stracture
+	private static String CreateJSON(HashMap<Integer,Point> map, boolean ans, String projName, String tranimg, String finalImg) { // create json stracture
 		String str = "{\n";
-		str += "\"Project Name\": \"" +projName + "\",\n";
+		str += "\"ProjectName\": \"" +projName + "\",\n";
+		if(!ans) { // phone version 
+			tranimg = PhonePath(tranimg);
+			finalImg = PhonePath(finalImg);
+		}
+		if(tranimg.equals("null")) tranimg ="";
+		if(finalImg.equals("null")) finalImg ="";
+		str += "\"TransitionImage\": \"" +tranimg + "\",\n";
+		str += "\"FinalTransitionImage\": \"" +finalImg + "\",\n";
 		str += "\"Points\": [";
 		for(int i : map.keySet()) {
 			str += map.get(i).toJson(ans) + ",";
@@ -69,5 +83,13 @@ public class JSONHandler {
 			str = str.substring(0, str.length()-1);
 		str += "]\n}";
 		return str;
+	}
+	
+	private static String PhonePath(String path) {
+		try {
+		String PhonePath = "/storage/emulated/0/Android/data/com.Ariel.VrNavigation/files/Pictures/";
+		String[] p = path.split("\\\\");
+		return PhonePath + p[p.length-1];}
+		catch (Exception e) {return "";}
 	}
 }

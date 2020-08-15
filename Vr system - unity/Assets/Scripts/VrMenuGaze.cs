@@ -34,13 +34,11 @@ public class VrMenuGaze : MonoBehaviour
     public void GVRon()
     {
         gvrStatus = true;
-        Debug.Log("On");
     }
     public void GVROff()
     {
         gvrStatus = false;
         gvrTimer = 0;
-        Debug.Log("Off");
         try
         {
             imgGaze.fillAmount = 0;

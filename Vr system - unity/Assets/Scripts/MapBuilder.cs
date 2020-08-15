@@ -41,8 +41,12 @@ public class MapBuilder : MonoBehaviour
         {
             textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
             sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
-            hotspotPic = Resources.Load<Texture2D>(hotspotName);
-            FinalHotspotPic = Resources.Load<Texture2D>(finalHotspotName);
+            if (points.TransitionImage.Equals(""))
+                hotspotPic = Resources.Load<Texture2D>(hotspotName);
+            else hotspotPic = LoadPNG(points.TransitionImage);
+            if (points.FinalTransitionImage.Equals(""))
+                FinalHotspotPic = Resources.Load<Texture2D>(finalHotspotName);
+            else FinalHotspotPic = LoadPNG(points.FinalTransitionImage);
             // Build map Points
             for (int i = 0; i < points.points.Count; i++)
             {
@@ -101,6 +105,7 @@ public class MapBuilder : MonoBehaviour
             sphereChanger.ChangeSphere(wantedSphere.transform, 0, lastSphere);
         }
         catch (NullReferenceException e) { SceneManager.LoadScene("InsertJson"); }
+        catch (FileNotFoundException e1) { SceneManager.LoadScene("InsertJson"); }
     }
 
     private void OnPointerEnterDelegate(PointerEventData data)

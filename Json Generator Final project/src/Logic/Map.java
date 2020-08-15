@@ -14,6 +14,8 @@ import Persistance.JSONHandler;
 public class Map {
 	private HashMap<Integer,Point> map = new HashMap<>();  // key = id , val = Point;
 	private HashMap<String,Point> nickToPoint = new HashMap<>();	// key = nickName , val = Point;
+	private String transitionImg = "";
+	private String finalTransitionImg = "";
 
 	public HashMap<Integer, Point> getMap() {
 		return map;
@@ -21,6 +23,22 @@ public class Map {
 
 	public HashMap<String,Point> getNickToPoint() {
 		return nickToPoint;
+	}
+
+	public String getTransitionImg() {
+		return transitionImg;
+	}
+
+	public void setTransitionImg(String transitionImg) {
+		this.transitionImg = transitionImg;
+	}
+
+	public String getFinalTransitionImg() {
+		return finalTransitionImg;
+	}
+
+	public void setFinalTransitionImg(String finalTransitionImg) {
+		this.finalTransitionImg = finalTransitionImg;
 	}
 
 	public void AddPoint(String url) {
@@ -94,7 +112,7 @@ public class Map {
 	}
 
 	public void ExportJSON(String path,boolean ans, String projName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
-		JSONHandler.Save(path, map, ans, projName);
+		JSONHandler.Save(path, map, ans, projName, transitionImg, finalTransitionImg);
 	}
 
 	public Map ImportJSON(String path) throws IOException, ParseException { 
@@ -104,6 +122,8 @@ public class Map {
 	public void ClearMap() {
 		map.clear();
 		nickToPoint.clear();
+		transitionImg ="";
+		finalTransitionImg = "";
 	}
 
 	public ArrayList<Integer> GetTextsID(){

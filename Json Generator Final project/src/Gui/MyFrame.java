@@ -22,9 +22,9 @@ import Logic.Optionaltext;
 public class MyFrame implements ActionListener {
 
 	private JMenuItem clear, load, about, Export_Json, addPicture, removePicture, editPicture, addNeighbor, 
-	removeNeighbor, editNeighbor, addText, editText, removeText;
+	removeNeighbor, editNeighbor, addText, editText, removeText, editTranImg, editFinalTranImg, showTranImg, showFinalTranImg;
 	private JMenuBar menubar;
-	private JMenu menu, menu2, menu3;
+	private JMenu menu, menu2, menu3, menu4;
 	private Image img;
 	private int width, hight;
 	private JFrame frame;
@@ -115,6 +115,20 @@ public class MyFrame implements ActionListener {
 			editText.addActionListener(this);
 			menu3.add(editText);
 			menubar.add(menu3);
+			menu4 = new JMenu("Optional");
+			showTranImg = new JMenuItem("Show transition image path");
+			showTranImg.addActionListener(this);
+			menu4.add(showTranImg);
+			showFinalTranImg = new JMenuItem("Show final transition image path");
+			showFinalTranImg.addActionListener(this);
+			menu4.add(showFinalTranImg);
+			editTranImg = new JMenuItem("Edit transition image");
+			editTranImg.addActionListener(this);
+			menu4.add(editTranImg);
+			editFinalTranImg = new JMenuItem("Edit final transition image");
+			editFinalTranImg.addActionListener(this);
+			menu4.add(editFinalTranImg);
+			menubar.add(menu4);
 			frame.setJMenuBar(menubar);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setLayout(new BorderLayout());
@@ -388,7 +402,17 @@ public class MyFrame implements ActionListener {
 			panel.setPic(img);
 			textsIDs.clear();
 		}
-
+		//--Optional Menu--
+		if(e.getSource() == showTranImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getTransitionImg());}
+		if(e.getSource() == showFinalTranImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getFinalTransitionImg());}
+		if(e.getSource() == editTranImg ||e.getSource() == editFinalTranImg) {
+			JFileChooser fileChooser = new JFileChooser();
+			int returnValue = fileChooser.showOpenDialog(null);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				if(e.getSource() == editTranImg) map.setTransitionImg(fileChooser.getSelectedFile().getAbsolutePath());
+				else map.setFinalTransitionImg(fileChooser.getSelectedFile().getAbsolutePath());
+			}
+		}
 		//--Add/Remove Menu--
 		//Picture Manager
 		//Add Picture

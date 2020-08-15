@@ -121,14 +121,11 @@ public class SphereChanger : MonoBehaviour
         }
         else
         {
-            Debug.Log(newAng);
             string debug = "wanted azimuth is : " + newAng+"\n";
             tripod.transform.position = nextSphere.position;
             tripod.transform.localEulerAngles = new Vector3(0, newAng, 0);
-            Debug.Log(tripod.transform.rotation);
             debug += "new rotation is : " + tripod.transform.eulerAngles.y+"\n";
             debug += "new tripod rotation is : "+ tripod.transform.rotation;
-            Debug.Log(DebugOn);
             if(DebugOn)
                 tripod.transform.Find("Main Camera").Find("Canvas").Find("Debug").GetComponentInChildren<TextMeshProUGUI>().SetText(debug);
             textsEditor.ChangePic(nextSphere.name);
