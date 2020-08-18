@@ -19,7 +19,7 @@ public class DebugMode : MonoBehaviour
 
     void Update()
     {
-        string debug = "current azimth : " + Camera.main.transform.eulerAngles.y + "\n";
+        string debug = "current azimth : " + (Camera.main.transform.eulerAngles.y-180) + "\n";
         debug += "Camera rotation : " + Camera.main.transform.rotation;
 
         if (DebugOn)
