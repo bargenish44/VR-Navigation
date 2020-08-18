@@ -47,7 +47,8 @@ public class VrGaze : MonoBehaviour
     public void moveSphere()
     {
         last = current;
-        wantedsphere = GameObject.Find("Sphere" + current);
+        wantedsphere = GameObject.Find("Tripod").GetComponent<SpheresContainer>().GetSpheres()[("Sphere" + current)];
+        GVROff();
         sphereChanger.ChangeSphere(wantedsphere.transform, azimuth,lastsphere);
     }
 }

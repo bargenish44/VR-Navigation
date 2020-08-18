@@ -24,12 +24,13 @@ public class MapBuilder : MonoBehaviour
     private int fromPointID;
     private int toPointID;
     private float sphereScale = 3;
-    private float sphereScaleY = 1.2f;
+    private float sphereScaleY = 1.3f;
     private Dictionary<(int, int), float> azimuts = new Dictionary<(int, int), float>();
     private GameObject tripod;
     private string lastSphere;
     private Sprite sprite;
     private TextManager textsEditor;
+    private SpheresContainer spheres;
 
     private void Start()
     {
@@ -41,17 +42,18 @@ public class MapBuilder : MonoBehaviour
         {
             textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
             sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
-            if (points.TransitionImage.Equals(""))
+            if (points.NavigationImage.Equals(""))
                 hotspotPic = Resources.Load<Texture2D>(hotspotName);
-            else hotspotPic = LoadPNG(points.TransitionImage);
-            if (points.FinalTransitionImage.Equals(""))
+            else hotspotPic = LoadPNG(points.NavigationImage);
+            if (points.FinalNavigationImage.Equals(""))
                 FinalHotspotPic = Resources.Load<Texture2D>(finalHotspotName);
-            else FinalHotspotPic = LoadPNG(points.FinalTransitionImage);
+            else FinalHotspotPic = LoadPNG(points.FinalNavigationImage);
             // Build map Points
+            spheres = GameObject.Find("Tripod").GetComponent<SpheresContainer>();
             for (int i = 0; i < points.points.Count; i++)
             {
                 GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                sphere.transform.position = new Vector3(0, (sphereScale + 0.5f) * i, 0);
+                sphere.transform.localPosition = new Vector3(0, 0, 0);
                 sphere.name += points.points[i].id;
                 sphere.transform.localScale = new Vector3(sphereScale, sphereScaleY, sphereScale);
                 sphere.gameObject.GetComponent<SphereCollider>().enabled = false;
@@ -88,18 +90,17 @@ public class MapBuilder : MonoBehaviour
                     sr.sprite = sprite;
                     SphereCollider sc = go.AddComponent(typeof(SphereCollider)) as SphereCollider;
                     EventTrigger trigger = go.AddComponent<EventTrigger>();
-                    EventTrigger.Entry click = new EventTrigger.Entry();
                     EventTrigger.Entry enter = new EventTrigger.Entry();
                     EventTrigger.Entry exit = new EventTrigger.Entry();
-                    click.eventID = EventTriggerType.PointerDown;
                     enter.eventID = EventTriggerType.PointerEnter;
                     exit.eventID = EventTriggerType.PointerExit;
                     exit.callback.AddListener((data) => { OnPointerExitDelegate((PointerEventData)data); });
                     enter.callback.AddListener((data) => { OnPointerEnterDelegate((PointerEventData)data); });
-                    trigger.triggers.Add(click);
                     trigger.triggers.Add(enter);
                     trigger.triggers.Add(exit);
                 }
+                spheres.GetSpheres().Add(sp[i].name, sp[i]);
+                if (i != 0) sp[i].SetActive(false); // viewing only the first point
             }
             GameObject wantedSphere = sp[0];
             sphereChanger.ChangeSphere(wantedSphere.transform, 0, lastSphere);
@@ -114,7 +115,7 @@ public class MapBuilder : MonoBehaviour
         float azimuth = 0;
         String requestedID = data.pointerCurrentRaycast.gameObject.name.Substring(7);
         string fromPoint = script.last;
-        if (fromPoint.Equals("")) { fromPoint = "1"; azimuth = 0; }
+        if (fromPoint.Equals("")) { fromPoint = "1"; azimuth = 0;}
         else azimuth = azimuts[(Int32.Parse(fromPoint), Int32.Parse(requestedID))];
         script.GVRon(requestedID, azimuth, lastSphere);
     }
@@ -125,15 +126,15 @@ public class MapBuilder : MonoBehaviour
     }
     private Texture2D LoadPNG(string filePath)
     {
-            Texture2D tex = new Texture2D(2, 2);
+        Texture2D tex = new Texture2D(2, 2);
         try
         {
             byte[] bytes = File.ReadAllBytes(filePath);
             tex.LoadImage(bytes);
         }
         catch (DirectoryNotFoundException e) { SceneManager.LoadScene("InsertJson"); }
-            return tex;
-    } 
+        return tex;
+    }
     private Sprite HotspotPic(Texture2D pic)
     {
         return Sprite.Create(pic, new Rect(0, 0, pic.width, pic.height), new Vector3(0.1f, 0.1f));

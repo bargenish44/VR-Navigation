@@ -98,7 +98,11 @@ public class Point {
 		String newPath;
 		String PhonePath = "/storage/emulated/0/Android/data/com.Ariel.VrNavigation/files/Pictures/";
 		String[] pic = Picture.split("\\\\");
+		String [] pic2 = Picture.split("/");
 		String picName = pic[pic.length-1];
+		if(pic.length <= 1) {
+			picName = pic2[pic2.length-1];
+		}
 		if(!ans) // phone version
 			newPath = PhonePath+picName;
 		else newPath = Picture.replaceAll("\\\\", "/");

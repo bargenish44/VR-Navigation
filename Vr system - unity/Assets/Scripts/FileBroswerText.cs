@@ -21,7 +21,7 @@ public class FileBroswerText : MonoBehaviour
     public void OpenExplorer(string json)
     {
         Parser parser = new Parser();
-        var a = parser.DeserializeJson(json);        Debug.Log(a.ToString());
+        var a = parser.DeserializeJson(json);
         MapBuilder mapBuilder = (new GameObject("MapBuilder")).AddComponent<MapBuilder>();
         mapBuilder.BuildMap(a);
     }

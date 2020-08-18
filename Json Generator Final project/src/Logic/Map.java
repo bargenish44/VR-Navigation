@@ -14,8 +14,8 @@ import Persistance.JSONHandler;
 public class Map {
 	private HashMap<Integer,Point> map = new HashMap<>();  // key = id , val = Point;
 	private HashMap<String,Point> nickToPoint = new HashMap<>();	// key = nickName , val = Point;
-	private String transitionImg = "";
-	private String finalTransitionImg = "";
+	private String navigationImg = "";
+	private String finalNavigationImg = "";
 
 	public HashMap<Integer, Point> getMap() {
 		return map;
@@ -25,20 +25,20 @@ public class Map {
 		return nickToPoint;
 	}
 
-	public String getTransitionImg() {
-		return transitionImg;
+	public String getNavigationImg() {
+		return navigationImg;
 	}
 
-	public void setTransitionImg(String transitionImg) {
-		this.transitionImg = transitionImg;
+	public void setNavigationImg(String navImg) {
+		navigationImg = navImg;
 	}
 
-	public String getFinalTransitionImg() {
-		return finalTransitionImg;
+	public String getFinalNavigationImg() {
+		return finalNavigationImg;
 	}
 
-	public void setFinalTransitionImg(String finalTransitionImg) {
-		this.finalTransitionImg = finalTransitionImg;
+	public void setFinalNavigationImg(String finalNavImg) {
+		this.finalNavigationImg = finalNavImg;
 	}
 
 	public void AddPoint(String url) {
@@ -112,7 +112,7 @@ public class Map {
 	}
 
 	public void ExportJSON(String path,boolean ans, String projName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
-		JSONHandler.Save(path, map, ans, projName, transitionImg, finalTransitionImg);
+		JSONHandler.Save(path, map, ans, projName, navigationImg, finalNavigationImg);
 	}
 
 	public Map ImportJSON(String path) throws IOException, ParseException { 
@@ -122,8 +122,8 @@ public class Map {
 	public void ClearMap() {
 		map.clear();
 		nickToPoint.clear();
-		transitionImg ="";
-		finalTransitionImg = "";
+		navigationImg ="";
+		finalNavigationImg = "";
 	}
 
 	public ArrayList<Integer> GetTextsID(){

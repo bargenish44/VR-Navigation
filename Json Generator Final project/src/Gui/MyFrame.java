@@ -2,7 +2,9 @@ package Gui;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,6 +16,8 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import Logic.Map;
 import Logic.Neighbor;
 import Logic.Optionaltext;
@@ -22,7 +26,7 @@ import Logic.Optionaltext;
 public class MyFrame implements ActionListener {
 
 	private JMenuItem clear, load, about, Export_Json, addPicture, removePicture, editPicture, addNeighbor, 
-	removeNeighbor, editNeighbor, addText, editText, removeText, editTranImg, editFinalTranImg, showTranImg, showFinalTranImg;
+	removeNeighbor, editNeighbor, addText, editText, removeText, editNavImg, editFinalNavImg, showNavImg, showFinalNavImg;
 	private JMenuBar menubar;
 	private JMenu menu, menu2, menu3, menu4;
 	private Image img;
@@ -48,7 +52,7 @@ public class MyFrame implements ActionListener {
 	private boolean TextListChanged = false;
 	private String NeighborName = "Neighbor to : ";
 	private BufferedImage arrow;
-	private String neiPicPath = "arrow.jpg";
+	private String neiPicPath = "/arrow.jpg";
 	private int ImageSizeWidh = 30;
 	private int ImageSizeHeight = 30;
 	private int rotationFix= 180;
@@ -67,7 +71,8 @@ public class MyFrame implements ActionListener {
 	public MyFrame() {
 		try {
 			img = null;
-			arrow = ImageIO.read(new File(neiPicPath));
+			URL url = MyFrame.class.getResource(neiPicPath);
+			arrow = ImageIO.read(url);
 			frame = new JFrame("Json Generator");
 			menubar = new JMenuBar();
 			menu = new JMenu("Help");
@@ -87,7 +92,7 @@ public class MyFrame implements ActionListener {
 			menu2.add(Export_Json);
 			menubar.add(menu2);
 			menu3 = new JMenu("Add/Remove");
-			addPicture = new JMenuItem("Add picture");
+			addPicture = new JMenuItem("Add picture/s");
 			addPicture.addActionListener(this);
 			menu3.add(addPicture);
 			removePicture = new JMenuItem("Remove picture");
@@ -116,18 +121,18 @@ public class MyFrame implements ActionListener {
 			menu3.add(editText);
 			menubar.add(menu3);
 			menu4 = new JMenu("Optional");
-			showTranImg = new JMenuItem("Show transition image path");
-			showTranImg.addActionListener(this);
-			menu4.add(showTranImg);
-			showFinalTranImg = new JMenuItem("Show final transition image path");
-			showFinalTranImg.addActionListener(this);
-			menu4.add(showFinalTranImg);
-			editTranImg = new JMenuItem("Edit transition image");
-			editTranImg.addActionListener(this);
-			menu4.add(editTranImg);
-			editFinalTranImg = new JMenuItem("Edit final transition image");
-			editFinalTranImg.addActionListener(this);
-			menu4.add(editFinalTranImg);
+			showNavImg = new JMenuItem("Show navigation image path");
+			showNavImg.addActionListener(this);
+			menu4.add(showNavImg);
+			showFinalNavImg = new JMenuItem("Show final navigation image path");
+			showFinalNavImg.addActionListener(this);
+			menu4.add(showFinalNavImg);
+			editNavImg = new JMenuItem("Edit navigation image");
+			editNavImg.addActionListener(this);
+			menu4.add(editNavImg);
+			editFinalNavImg = new JMenuItem("Edit final navigation image");
+			editFinalNavImg.addActionListener(this);
+			menu4.add(editFinalNavImg);
 			menubar.add(menu4);
 			frame.setJMenuBar(menubar);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,7 +145,6 @@ public class MyFrame implements ActionListener {
 					if (!e.getValueIsAdjusting()) {
 						try {
 							selectedImageIndex = map.getNickToPoint().get(picturesLabels.get(list.getSelectedIndex())).getId();
-							// selectedImageIndex = Integer.parseInt(picturesLabels.get(list.getSelectedIndex()).substring(PicName.length()));
 							if(! (selectedImageIndex < 0 || map.getMap().get(selectedImageIndex) == null))
 								img = ImageIO.read(new File(map.getMap().get(selectedImageIndex).getPicture()));
 							panel.setPic(img);
@@ -340,7 +344,8 @@ public class MyFrame implements ActionListener {
 					"After you did create the map,\r\n" + 
 					"You can export the JSON to phone version (with phone paths),\r\n" + 
 					"or to a computer version that allows you to edit the JSON.\r\n" + 
-					"Also, you have the option to load an existing JSON or clear your map." ,"About", JOptionPane.PLAIN_MESSAGE);
+					"Also, you have the option to load an existing JSON or clear your map.\\r\\n" +
+					"You can edit the navigation arrows, put it blank if you want the default icons" ,"About", JOptionPane.PLAIN_MESSAGE);
 			choose = "";
 		}
 
@@ -403,14 +408,17 @@ public class MyFrame implements ActionListener {
 			textsIDs.clear();
 		}
 		//--Optional Menu--
-		if(e.getSource() == showTranImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getTransitionImg());}
-		if(e.getSource() == showFinalTranImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getFinalTransitionImg());}
-		if(e.getSource() == editTranImg ||e.getSource() == editFinalTranImg) {
+		if(e.getSource() == showNavImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getNavigationImg());}
+		if(e.getSource() == showFinalNavImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getFinalNavigationImg());}
+		if(e.getSource() == editNavImg ||e.getSource() == editFinalNavImg) {
 			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(
+				    "Image files", ImageIO.getReaderFileSuffixes()));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				if(e.getSource() == editTranImg) map.setTransitionImg(fileChooser.getSelectedFile().getAbsolutePath());
-				else map.setFinalTransitionImg(fileChooser.getSelectedFile().getAbsolutePath());
+				if(e.getSource() == editNavImg) map.setNavigationImg(fileChooser.getSelectedFile().getAbsolutePath());
+				else map.setFinalNavigationImg(fileChooser.getSelectedFile().getAbsolutePath());
 			}
 		}
 		//--Add/Remove Menu--
@@ -419,6 +427,9 @@ public class MyFrame implements ActionListener {
 		if (e.getSource() == addPicture) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setMultiSelectionEnabled(true);
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(
+				    "Image files", ImageIO.getReaderFileSuffixes()));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File[] files = fileChooser.getSelectedFiles();
@@ -443,6 +454,9 @@ public class MyFrame implements ActionListener {
 		//Edit Picture
 		if (e.getSource() == editPicture) {
 			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(
+				    "Image files", ImageIO.getReaderFileSuffixes()));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				try {

@@ -11,15 +11,15 @@ public class Parser
     public class Points
     {
         public string Projectname { get; set; }
-        public string TransitionImage { get; set; }
-        public string FinalTransitionImage { get; set; }
+        public string NavigationImage { get; set; }
+        public string FinalNavigationImage { get; set; }
         public List<Point> points = new List<Point>();
         public string ToString()
         {
             string s = "";
             s += "Project name : " + Projectname;
-            s += ",\nTrans img : " + TransitionImage;
-            s += ",\nFinal trans img : " + FinalTransitionImage + ",\n";
+            s += ",\nTrans img : " + NavigationImage;
+            s += ",\nFinal trans img : " + FinalNavigationImage + ",\n";
             foreach (Point p in points)
             {
                 s += p.ToString() + "\n";
