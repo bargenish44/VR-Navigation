@@ -6,6 +6,7 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -311,7 +312,8 @@ public class MyFrame implements ActionListener {
 				}
 				listModel.clear();
 				for(int i=0;i<picturesLabels.size();i++) {
-					listModel.addElement(picturesLabels.get(i));
+					String pointName = picturesLabels.get(i);
+					listModel.addElement("ID : "+map.getNickToPoint().get(pointName).getId()+"  |  "+picturesLabels.get(i));
 				}
 				listChanged = false;
 			}
