@@ -27,7 +27,8 @@ import Logic.Optionaltext;
 public class MyFrame implements ActionListener {
 
 	private JMenuItem clear, load, about, Export_Json, addPicture, removePicture, editPicture, addNeighbor, 
-	removeNeighbor, editNeighbor, addText, editText, removeText, editNavImg, editFinalNavImg, showNavImg, showFinalNavImg;
+	removeNeighbor, editNeighbor, addText, editText, removeText, editNavImg, editFinalNavImg, showNavImg, showFinalNavImg,
+	clearNavImg, clearFinalNavImg;
 	private JMenuBar menubar;
 	private JMenu menu, menu2, menu3, menu4;
 	private Image img;
@@ -134,6 +135,12 @@ public class MyFrame implements ActionListener {
 			editFinalNavImg = new JMenuItem("Edit final navigation image");
 			editFinalNavImg.addActionListener(this);
 			menu4.add(editFinalNavImg);
+			clearNavImg = new JMenuItem("Clear navigation image");
+			clearNavImg.addActionListener(this);
+			menu4.add(clearNavImg);
+			clearFinalNavImg = new JMenuItem("Clear final navigation image");
+			clearFinalNavImg.addActionListener(this);
+			menu4.add(clearFinalNavImg);
 			menubar.add(menu4);
 			frame.setJMenuBar(menubar);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -410,19 +417,29 @@ public class MyFrame implements ActionListener {
 			textsIDs.clear();
 		}
 		//--Optional Menu--
-		if(e.getSource() == showNavImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getNavigationImg());}
-		if(e.getSource() == showFinalNavImg) {JOptionPane.showMessageDialog(null, "The path is : "+ map.getFinalNavigationImg());}
+		if(e.getSource() == showNavImg) {
+			if(map.getNavigationImg().equals(""))
+				JOptionPane.showMessageDialog(null, "The path is : default");
+			else JOptionPane.showMessageDialog(null, "The path is : "+ map.getNavigationImg());
+		}
+		if(e.getSource() == showFinalNavImg) {
+			if(map.getFinalNavigationImg().equals(""))
+				JOptionPane.showMessageDialog(null, "The path is : default");
+			else JOptionPane.showMessageDialog(null, "The path is : "+ map.getFinalNavigationImg());
+		}
 		if(e.getSource() == editNavImg ||e.getSource() == editFinalNavImg) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
 			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(
-				    "Image files", ImageIO.getReaderFileSuffixes()));
+					"Image files", ImageIO.getReaderFileSuffixes()));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				if(e.getSource() == editNavImg) map.setNavigationImg(fileChooser.getSelectedFile().getAbsolutePath());
 				else map.setFinalNavigationImg(fileChooser.getSelectedFile().getAbsolutePath());
 			}
 		}
+		if(e.getSource() == clearNavImg) map.setNavigationImg("");
+		if(e.getSource() == clearFinalNavImg) map.setFinalNavigationImg("");
 		//--Add/Remove Menu--
 		//Picture Manager
 		//Add Picture
@@ -431,7 +448,7 @@ public class MyFrame implements ActionListener {
 			fileChooser.setMultiSelectionEnabled(true);
 			fileChooser.setAcceptAllFileFilterUsed(false);
 			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(
-				    "Image files", ImageIO.getReaderFileSuffixes()));
+					"Image files", ImageIO.getReaderFileSuffixes()));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File[] files = fileChooser.getSelectedFiles();
@@ -458,7 +475,7 @@ public class MyFrame implements ActionListener {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
 			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(
-				    "Image files", ImageIO.getReaderFileSuffixes()));
+					"Image files", ImageIO.getReaderFileSuffixes()));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				try {
