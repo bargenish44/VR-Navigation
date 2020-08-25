@@ -71,6 +71,8 @@ public class JSONHandler {
 			naviimg = PhonePath(naviimg);
 			finalImg = PhonePath(finalImg);
 		}
+		naviimg = naviimg.replaceAll("\\\\", "/");
+		finalImg = finalImg.replaceAll("\\\\", "/");
 		if(naviimg.equals("null")) naviimg ="";
 		if(finalImg.equals("null")) finalImg ="";
 		str += "\"NavigationImage\": \"" +naviimg + "\",\n";
@@ -90,7 +92,13 @@ public class JSONHandler {
 		try {
 		String PhonePath = "/storage/emulated/0/Android/data/com.Ariel.VrNavigation/files/Pictures/";
 		String[] p = path.split("\\\\");
-		return PhonePath + p[p.length-1];}
+		if(p.length != 1)
+			return PhonePath + p[p.length-1];
+		else {
+			p = path.split("/");
+				return PhonePath + p[p.length-1];
+			}
+		}
 		catch (Exception e) {return "";}
 	}
 }
