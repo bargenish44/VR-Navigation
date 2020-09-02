@@ -63,6 +63,10 @@ public class Map {
 			}catch (IllegalArgumentException i) {}
 		}
 		nickToPoint.remove(map.get(id).getNickName());
+		if(endsPoint.contains(id+ ""))
+			getEndsPoint().remove(id+ "");
+		if(startPoint.equals(id+""))
+			startPoint = "";
 		map.remove(id);
 	}
 	public void EditPoint(int id , String newUrl) {
