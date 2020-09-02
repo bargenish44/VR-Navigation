@@ -10,12 +10,15 @@ import javax.swing.JFileChooser;
 import org.json.simple.parser.ParseException;
 
 import Persistance.JSONHandler;
+import sun.rmi.transport.Endpoint;
 
 public class Map {
 	private HashMap<Integer,Point> map = new HashMap<>();  // key = id , val = Point;
 	private HashMap<String,Point> nickToPoint = new HashMap<>();	// key = nickName , val = Point;
 	private String navigationImg = "";
 	private String finalNavigationImg = "";
+	private String startPoint = "";
+	private ArrayList<String> endsPoint = new ArrayList<>();
 
 	public HashMap<Integer, Point> getMap() {
 		return map;
@@ -112,7 +115,7 @@ public class Map {
 	}
 
 	public void ExportJSON(String path,boolean ans, String projName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
-		JSONHandler.Save(path, map, ans, projName, navigationImg, finalNavigationImg);
+		JSONHandler.Save(path, map, ans, projName, navigationImg, finalNavigationImg, startPoint, endsPoint);
 	}
 
 	public Map ImportJSON(String path) throws IOException, ParseException { 
@@ -124,6 +127,8 @@ public class Map {
 		nickToPoint.clear();
 		navigationImg ="";
 		finalNavigationImg = "";
+		startPoint = "";
+		endsPoint.clear();
 	}
 
 	public ArrayList<Integer> GetTextsID(){
@@ -136,5 +141,21 @@ public class Map {
 			}
 		}
 		return textsID;
+	}
+
+	public String getStartPoint() {
+		return startPoint;
+	}
+
+	public void setStartPoint(String startPoint) {
+		this.startPoint = startPoint;
+	}
+
+	public ArrayList<String> getEndsPoint() {
+		return endsPoint;
+	}
+	
+	public void setEndsPoint(ArrayList<String> points) {
+		endsPoint = points;
 	}
 }

@@ -14,8 +14,8 @@ public class VrGaze : MonoBehaviour
     public float azimuth = 0f;
     private SphereChanger sphereChanger;
     private GameObject wantedsphere;
-    private string lastsphere;
-    private 
+    private List<string> lastspheres;
+ 
     void Start()
     {
         sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
@@ -31,12 +31,12 @@ public class VrGaze : MonoBehaviour
         if(imgGaze.fillAmount >= 1)moveSphere(); // 1 is full amount => move point
     }
 
-    public void GVRon(string _current , float _azimuth,string lastsphere)
+    public void GVRon(string _current , float _azimuth,List<string> lastspheres)
     {
         gvrStatus = true;
         current = _current;
         azimuth = _azimuth;
-        this.lastsphere = lastsphere;
+        this.lastspheres = lastspheres;
     }
     public void GVROff()
     {
@@ -49,6 +49,6 @@ public class VrGaze : MonoBehaviour
         last = current;
         wantedsphere = GameObject.Find("Tripod").GetComponent<SpheresContainer>().GetSpheres()[("Sphere" + current)];
         GVROff();
-        sphereChanger.ChangeSphere(wantedsphere.transform, azimuth,lastsphere);
+        sphereChanger.ChangeSphere(wantedsphere.transform, azimuth,lastspheres);
     }
 }

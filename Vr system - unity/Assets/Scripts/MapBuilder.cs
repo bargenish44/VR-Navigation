@@ -27,10 +27,11 @@ public class MapBuilder : MonoBehaviour
     private float sphereScaleY = 1.3f;
     private Dictionary<(int, int), float> azimuts = new Dictionary<(int, int), float>();
     private GameObject tripod;
-    private string lastSphere;
+    private List<string> lastSpheres = new List<string>();
     private Sprite sprite;
     private TextManager textsEditor;
     private SpheresContainer spheres;
+    private GameObject startPoint;
 
     private void Start()
     {
@@ -38,14 +39,14 @@ public class MapBuilder : MonoBehaviour
     }
     public void BuildMap(Parser.Points points)
     {
-        try
+        //  try
         {
             textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
             sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
-            if (points.NavigationImage.Equals(""))
+            if (points.NavigationImage.Equals("")) //default pic
                 hotspotPic = Resources.Load<Texture2D>(hotspotName);
             else hotspotPic = LoadPNG(points.NavigationImage);
-            if (points.FinalNavigationImage.Equals(""))
+            if (points.FinalNavigationImage.Equals("")) //default pic
                 FinalHotspotPic = Resources.Load<Texture2D>(finalHotspotName);
             else FinalHotspotPic = LoadPNG(points.FinalNavigationImage);
             // Build map Points
@@ -58,15 +59,20 @@ public class MapBuilder : MonoBehaviour
                 sphere.transform.localScale = new Vector3(sphereScale, sphereScaleY, sphereScale);
                 sphere.gameObject.GetComponent<SphereCollider>().enabled = false;
                 renderer = sphere.GetComponent<Renderer>();
-
                 material = new Material(Shader.Find(shaderStyle));
                 sphere.GetComponent<Renderer>().material = material;
                 var picture = LoadPNG(points.points[i].Picture);
                 renderer.material.mainTexture = picture;
                 sp.Add(sphere);
+                if (points.EndPoints.Contains(points.points[i].id))
+                    lastSpheres.Add(sphere.name.Substring(6));
+                if (points.StartPoint == (points.points[i].id))
+                    startPoint = sp[i];
                 textsEditor.texts.Add(sphere.name, points.points[i].OptionalText);
             }
-            lastSphere = points.points[points.points.Count - 1].id + "";
+            if (lastSpheres.Count == 0) // support JSON from previous versions.
+                lastSpheres.Add(sp[sp.Count - 1].name.Substring(6));
+            if (startPoint == null) startPoint = sp[0];
             // Build map's conections
             for (int i = 0; i < points.points.Count; i++)
             {
@@ -85,7 +91,7 @@ public class MapBuilder : MonoBehaviour
                     float z = 0.4f * Mathf.Sin(-wantedAzimuthRad);
                     go.transform.localRotation = Quaternion.Euler(0, wantedAzimuthDeg + 90, 0);
                     sr.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
-                    sprite = toPointID.ToString().Equals(lastSphere) ? HotspotPic(FinalHotspotPic) : HotspotPic(hotspotPic);
+                    sprite = lastSpheres.Contains(toPointID.ToString()) ? HotspotPic(FinalHotspotPic) : HotspotPic(hotspotPic);
                     go.transform.localPosition = new Vector3(x, y, z);
                     sr.sprite = sprite;
                     SphereCollider sc = go.AddComponent(typeof(SphereCollider)) as SphereCollider;
@@ -100,24 +106,25 @@ public class MapBuilder : MonoBehaviour
                     trigger.triggers.Add(exit);
                 }
                 spheres.GetSpheres().Add(sp[i].name, sp[i]);
-                if (i != 0) sp[i].SetActive(false); // viewing only the first point
+                sp[i].SetActive(false); // viewing only the first point
             }
-            GameObject wantedSphere = sp[0];
-            sphereChanger.ChangeSphere(wantedSphere.transform, 0, lastSphere);
+            startPoint.SetActive(true);
+            sphereChanger.ChangeSphere(startPoint.transform, 0, lastSpheres);
+            Debug.Log("last spheres is : " + string.Join(",", lastSpheres));
+            //}
+            /// catch (NullReferenceException e) { Debug.Log(e.Message); SceneManager.LoadScene("InsertJson"); }
+            // catch (FileNotFoundException e1) { Debug.Log(e1.Message); SceneManager.LoadScene("InsertJson"); }
         }
-        catch (NullReferenceException e) { SceneManager.LoadScene("InsertJson"); }
-        catch (FileNotFoundException e1) { SceneManager.LoadScene("InsertJson"); }
     }
-
     private void OnPointerEnterDelegate(PointerEventData data)
     {
         var script = tripod.GetComponent<VrGaze>();
         float azimuth = 0;
         String requestedID = data.pointerCurrentRaycast.gameObject.name.Substring(7);
         string fromPoint = script.last;
-        if (fromPoint.Equals("")) { fromPoint = "1"; azimuth = 0;}
+        if (fromPoint.Equals("")) { fromPoint = "1"; azimuth = 0; }
         else azimuth = azimuts[(Int32.Parse(fromPoint), Int32.Parse(requestedID))];
-        script.GVRon(requestedID, azimuth, lastSphere);
+        script.GVRon(requestedID, azimuth, lastSpheres);
     }
     private void OnPointerExitDelegate(PointerEventData data)
     {

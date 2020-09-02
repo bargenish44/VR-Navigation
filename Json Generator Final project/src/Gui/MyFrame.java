@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -28,7 +29,7 @@ public class MyFrame implements ActionListener {
 
 	private JMenuItem clear, load, about, Export_Json, addPicture, removePicture, editPicture, addNeighbor, 
 	removeNeighbor, editNeighbor, addText, editText, removeText, editNavImg, editFinalNavImg, showNavImg, showFinalNavImg,
-	clearNavImg, clearFinalNavImg;
+	clearNavImg, clearFinalNavImg, markAsStartPoint, markAsEndPoints, unmarkEndPoints; 
 	private JMenuBar menubar;
 	private JMenu menu, menu2, menu3, menu4;
 	private Image img;
@@ -141,6 +142,15 @@ public class MyFrame implements ActionListener {
 			clearFinalNavImg = new JMenuItem("Clear final navigation image");
 			clearFinalNavImg.addActionListener(this);
 			menu4.add(clearFinalNavImg);
+			markAsStartPoint = new JMenuItem("Mark as start point");
+			markAsStartPoint.addActionListener(this);
+			menu4.add(markAsStartPoint);
+			markAsEndPoints = new JMenuItem("Mark as end point");
+			markAsEndPoints.addActionListener(this);
+			menu4.add(markAsEndPoints);
+			unmarkEndPoints = new JMenuItem("Unmark as end point");
+			unmarkEndPoints.addActionListener(this);
+			menu4.add(unmarkEndPoints);
 			menubar.add(menu4);
 			frame.setJMenuBar(menubar);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -320,7 +330,14 @@ public class MyFrame implements ActionListener {
 				listModel.clear();
 				for(int i=0;i<picturesLabels.size();i++) {
 					String pointName = picturesLabels.get(i);
-					listModel.addElement("ID : "+map.getNickToPoint().get(pointName).getId()+"  |  "+picturesLabels.get(i));
+					String start="";
+					String end = "";
+					if((map.getNickToPoint().get(pointName).getId()+"").equals(map.getStartPoint())) 
+						start = " | Start point ";
+					if(map.getEndsPoint().contains(map.getNickToPoint().get(pointName).getId()+"")) {
+						end = " | End point ";
+					}
+					listModel.addElement("ID : "+map.getNickToPoint().get(pointName).getId()+"  |  "+picturesLabels.get(i)+start+end);
 				}
 				listChanged = false;
 			}
@@ -353,8 +370,10 @@ public class MyFrame implements ActionListener {
 					"After you did create the map,\r\n" + 
 					"You can export the JSON to phone version (with phone paths),\r\n" + 
 					"or to a computer version that allows you to edit the JSON.\r\n" + 
-					"Also, you have the option to load an existing JSON or clear your map.\\r\\n" +
-					"You can edit the navigation arrows, put it blank if you want the default icons" ,"About", JOptionPane.PLAIN_MESSAGE);
+					"Also, you have the option to load an existing JSON or clear your map.\r\n" +
+					"You can edit the navigation arrows, put it blank if you want the default icons. \r\n" +
+					"You can select one starting point and several endpoints, the default is that the first point "
+					+ "is the beginning and the last point is the last.","About", JOptionPane.PLAIN_MESSAGE);
 			choose = "";
 		}
 
@@ -377,6 +396,7 @@ public class MyFrame implements ActionListener {
 					TextListChanged = true;
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "Error occurred during import JSON");
+					System.out.println(e1.getMessage());
 				}
 			choose = "";
 		}
@@ -440,6 +460,21 @@ public class MyFrame implements ActionListener {
 		}
 		if(e.getSource() == clearNavImg) map.setNavigationImg("");
 		if(e.getSource() == clearFinalNavImg) map.setFinalNavigationImg("");
+
+		if(e.getSource() == markAsStartPoint) {
+			map.setStartPoint(selectedImageIndex+"");
+			listChanged = true; // update list
+		}
+		if(e.getSource() == markAsEndPoints) {
+				map.getEndsPoint().add(selectedImageIndex+ "");
+			listChanged = true; // update list
+			Collections.sort(map.getEndsPoint());
+		}
+		if(e.getSource() == unmarkEndPoints) {
+			if(map.getEndsPoint().contains(selectedImageIndex+ ""))
+				map.getEndsPoint().remove(selectedImageIndex+ "");
+			listChanged = true; // update list
+		}
 		//--Add/Remove Menu--
 		//Picture Manager
 		//Add Picture

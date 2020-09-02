@@ -13,6 +13,8 @@ public class Parser
         public string Projectname { get; set; }
         public string NavigationImage { get; set; }
         public string FinalNavigationImage { get; set; }
+        public long StartPoint { get; set; }
+        public List<long> EndPoints = new List<long>();
         public List<Point> points = new List<Point>();
         public string ToString()
         {
@@ -20,6 +22,8 @@ public class Parser
             s += "Project name : " + Projectname;
             s += ",\nTrans img : " + NavigationImage;
             s += ",\nFinal trans img : " + FinalNavigationImage + ",\n";
+            s += ",\nStart Point : " + StartPoint+ ",\n";
+            s += ",\nEnd Points : " + string.Join(",", EndPoints) + ",\n";
             foreach (Point p in points)
             {
                 s += p.ToString() + "\n";

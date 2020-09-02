@@ -13,7 +13,7 @@ public class SphereChanger : MonoBehaviour
     private bool first = true;
     private string currentSphere = "";
     private string gameover = "GameOver";
-    private string lastSphere;
+    private List<string> lastSpheres;
     private TextManager textsEditor;
     private GameObject CurSphere;
 
@@ -35,14 +35,15 @@ public class SphereChanger : MonoBehaviour
         if (tripod == null) tripod = GameObject.Find("Tripod");
     }
 
-    public void ChangeSphere(Transform nextSphere, float angle, string last)
+    public void ChangeSphere(Transform nextSphere, float angle, List<string> lastPoints)
     {
+        Debug.Log("now at : " + nextSphere.name);
         if (first)
         {
             first = false;
             currentSphere = nextSphere.name;
             Stats.Path.Add(nextSphere.gameObject.name);
-            lastSphere = last;
+            lastSpheres = lastPoints;
             textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
         }
         else
@@ -59,7 +60,7 @@ public class SphereChanger : MonoBehaviour
         }
         float newang = angle;
         Change(nextSphere, newang);
-        if (nextSphere.name.Substring(6).Equals(lastSphere))
+        if(lastSpheres.Contains(nextSphere.name.Substring(6)))
         {
             Stats.CreateCsvFile();
             StartCoroutine(DoneCoroutine());
