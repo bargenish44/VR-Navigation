@@ -462,13 +462,23 @@ public class MyFrame implements ActionListener {
 		if(e.getSource() == clearFinalNavImg) map.setFinalNavigationImg("");
 
 		if(e.getSource() == markAsStartPoint) {
-			map.setStartPoint(selectedImageIndex+"");
-			listChanged = true; // update list
+			System.out.println(map.getEndsPoint().toString());
+			System.out.println(selectedImageIndex+"");
+			if(map.getEndsPoint().contains(selectedImageIndex+""))
+				JOptionPane.showMessageDialog(null,"An end point cannot be a starting point.");
+			else {
+				map.setStartPoint(selectedImageIndex+"");
+				listChanged = true; // update list
+			}
 		}
 		if(e.getSource() == markAsEndPoints) {
+			if(map.getStartPoint().equals(selectedImageIndex+""))
+				JOptionPane.showMessageDialog(null, "A starting point cannot be an endpoint.");
+			else {
 				map.getEndsPoint().add(selectedImageIndex+ "");
-			listChanged = true; // update list
-			Collections.sort(map.getEndsPoint());
+				listChanged = true; // update list
+				Collections.sort(map.getEndsPoint());
+			}
 		}
 		if(e.getSource() == unmarkEndPoints) {
 			if(map.getEndsPoint().contains(selectedImageIndex+ ""))
