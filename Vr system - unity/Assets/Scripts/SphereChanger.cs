@@ -4,82 +4,85 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Presentation;
 
-public class SphereChanger : MonoBehaviour
+namespace Presentation
 {
-
-    GameObject tripod;
-
-    private bool first = true;
-    private string currentSphere = "";
-    private string gameover = "GameOver";
-    private List<string> lastSpheres;
-    private TextManager textsEditor;
-    private GameObject CurSphere;
-
-
-
-
-    private void Start()
+    public class SphereChanger : MonoBehaviour
     {
-        tripod = GameObject.Find("Tripod");
-        textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
-    }
 
-    private void Update()
-    {
-        Stats.timer += Time.deltaTime;
-    }
-    void Awake()
-    {
-        if (tripod == null) tripod = GameObject.Find("Tripod");
-    }
+        GameObject tripod;
 
-    public void ChangeSphere(Transform nextSphere, float angle, List<string> lastPoints)
-    {
-        Debug.Log("now at : " + nextSphere.name);
-        if (first)
+        private bool first = true;
+        private string currentSphere = "";
+        private string gameover = "GameOver";
+        private List<string> lastSpheres;
+        private TextManager textsEditor;
+        private GameObject CurSphere;
+
+
+
+
+        private void Start()
         {
-            first = false;
-            currentSphere = nextSphere.name;
-            Stats.Path.Add(nextSphere.gameObject.name);
-            lastSpheres = lastPoints;
+            tripod = GameObject.Find("Tripod");
             textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
         }
-        else
+
+        private void Update()
         {
-            Stats.Times.Add(Mathf.Round(Stats.timer * 100f) / 100f);
-            Stats.timer = 0;
-            Stats.Path.Add(nextSphere.gameObject.name);
-            string MSG = "CHANGE - THE PATH IS : ";
-            for (int i = 0; i < Stats.Path.Count - 1; i++)
+            Stats.timer += Time.deltaTime;
+        }
+        void Awake()
+        {
+            if (tripod == null) tripod = GameObject.Find("Tripod");
+        }
+
+        public void ChangeSphere(Transform nextSphere, float angle, List<string> lastPoints)
+        {
+            if (first)
             {
-                MSG += Stats.Path[i] + "THE Time IS : " + Stats.Times[i] + " , ";
+                first = false;
+                currentSphere = nextSphere.name;
+                Stats.Path.Add(nextSphere.gameObject.name);
+                lastSpheres = lastPoints;
+                textsEditor = GameObject.Find("TextEditor").GetComponent<TextManager>();
             }
-            MSG += Stats.Path[Stats.Path.Count - 1];
+            else
+            {
+                Stats.Times.Add(Mathf.Round(Stats.timer * 100f) / 100f);
+                Stats.timer = 0;
+                Stats.Path.Add(nextSphere.gameObject.name);
+                string MSG = "CHANGE - THE PATH IS : ";
+                for (int i = 0; i < Stats.Path.Count - 1; i++)
+                {
+                    MSG += Stats.Path[i] + "THE Time IS : " + Stats.Times[i] + " , ";
+                }
+                MSG += Stats.Path[Stats.Path.Count - 1];
+            }
+            float newang = angle;
+            Change(nextSphere, newang);
+            if (lastSpheres.Contains(nextSphere.name.Substring(6)))
+            {
+                Stats.CreateCsvFile();
+                StartCoroutine(DoneCoroutine());
+            }
         }
-        float newang = angle;
-        Change(nextSphere, newang);
-        if(lastSpheres.Contains(nextSphere.name.Substring(6)))
+
+        IEnumerator DoneCoroutine()
         {
-            Stats.CreateCsvFile();
-            StartCoroutine(DoneCoroutine());
+            yield return new WaitForSeconds(2);
+            tripod.GetComponent<SceneCtrl>().ChangeScene(gameover);
+        }
+
+        void Change(Transform nextSphere, float newAng)
+        {
+            textsEditor.ChangePic(nextSphere.name);
+            if (CurSphere != null) // First time
+                CurSphere.SetActive(false);
+            nextSphere.gameObject.SetActive(true);
+            CurSphere = nextSphere.gameObject;
+            //tripod.transform.Rotate(0, 180, 0); // Anchoring fix.
         }
     }
-
-    IEnumerator DoneCoroutine()
-    {
-        yield return new WaitForSeconds(2);
-        tripod.GetComponent<SceneCtrl>().ChangeScene(gameover);
-    }
-
-    void Change(Transform nextSphere, float newAng)
-    {
-        textsEditor.ChangePic(nextSphere.name);
-        if (CurSphere != null) // First time
-            CurSphere.SetActive(false);
-        nextSphere.gameObject.SetActive(true);
-        CurSphere = nextSphere.gameObject;
-        //tripod.transform.Rotate(0, 180, 0); // Anchoring fix.
-    }
-}
+};

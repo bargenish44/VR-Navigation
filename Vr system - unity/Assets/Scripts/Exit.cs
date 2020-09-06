@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Exit : MonoBehaviour
+using Presentation;
+namespace Presentation
 {
-    private void OnMouseDown()
+    public class Exit : MonoBehaviour
     {
-        Stats.CreateCsvFile();
+        private void OnMouseDown()
+        {
+            Stats.CreateCsvFile();
+        }
     }
-}
+};

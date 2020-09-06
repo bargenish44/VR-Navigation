@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContinueAudio : MonoBehaviour
+namespace Presentation
 {
-    private void Awake()
+    public class ContinueAudio : MonoBehaviour
     {
-        DontDestroyOnLoad(transform.gameObject);
+        private void Awake()
+        {
+            DontDestroyOnLoad(transform.gameObject);
+        }
     }
-}
+
+};

@@ -3,34 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+namespace Presentation
+{
 
-public class Stats { 
-    public static ArrayList Path = new ArrayList();
-    public static ArrayList Times = new ArrayList();
-    public static float timer = 0;
-    public static void CreateCsvFile()
+    public class Stats
     {
-        Times.Add(timer);
-        string data=System.DateTime.Now+ ",";
-        for (int i = 0; i < Path.Count;i++)
+        public static ArrayList Path = new ArrayList();
+        public static ArrayList Times = new ArrayList();
+        public static float timer = 0;
+        public static void CreateCsvFile()
         {
-            data += Path[i]+" . Time - "+Times[i]+ " seconds.,";
-        }
-        try
-        {
-            data = data.Replace("Sphere", "PointID : ");
-            string path = Application.persistentDataPath + "/stats.csv";
-            if (!File.Exists(path))
+            Times.Add(timer);
+            string data = System.DateTime.Now + ",";
+            for (int i = 0; i < Path.Count; i++)
             {
-                File.WriteAllText(path, data);
+                data += Path[i] + " . Time - " + Times[i] + " seconds.,";
             }
-            else
+            try
             {
-                File.AppendAllText(path, "\n" + data);
-                Debug.Log("creation : old modified");
+                data = data.Replace("Sphere", "PointID : ");
+                string path = Application.persistentDataPath + "/stats.csv";
+                if (!File.Exists(path))
+                {
+                    File.WriteAllText(path, data);
+                }
+                else
+                {
+                    File.AppendAllText(path, "\n" + data);
+                    Debug.Log("creation : old modified");
+                }
+                // You can find the created folder in your phone's memory
             }
-            // You can find the created folder in your phone's memory
+            catch (Exception e) { Debug.LogError("csv problem : \n" + e); }
         }
-        catch (Exception e) { Debug.LogError ("csv problem : \n"+e); }
     }
-}
+};

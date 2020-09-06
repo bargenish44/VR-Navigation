@@ -3,52 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VrGaze : MonoBehaviour
+namespace Presentation
 {
-    public Image imgGaze;
-    public float totalTime = 2;
-    private bool gvrStatus ;
-    private float gvrTimer;
-    public string current = "";
-    public string last = "";
-    public float azimuth = 0f;
-    private SphereChanger sphereChanger;
-    private GameObject wantedsphere;
-    private List<string> lastspheres;
- 
-    void Start()
+    public class VrGaze : MonoBehaviour
     {
-        sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
-    }
+        public Image imgGaze;
+        public float totalTime = 2;
+        private bool gvrStatus;
+        private float gvrTimer;
+        public string current = "";
+        public string last = "";
+        public float azimuth = 0f;
+        private SphereChanger sphereChanger;
+        private GameObject wantedsphere;
+        private List<string> lastspheres;
 
-    void Update()
-    {
-        if (gvrStatus)
+        void Start()
         {
-            gvrTimer += Time.deltaTime;
-            imgGaze.fillAmount = gvrTimer / totalTime;
+            sphereChanger = GameObject.Find("SphereChanger").GetComponent<SphereChanger>();
         }
-        if(imgGaze.fillAmount >= 1)moveSphere(); // 1 is full amount => move point
-    }
 
-    public void GVRon(string _current , float _azimuth,List<string> lastspheres)
-    {
-        gvrStatus = true;
-        current = _current;
-        azimuth = _azimuth;
-        this.lastspheres = lastspheres;
+        void Update()
+        {
+            if (gvrStatus)
+            {
+                gvrTimer += Time.deltaTime;
+                imgGaze.fillAmount = gvrTimer / totalTime;
+            }
+            if (imgGaze.fillAmount >= 1) moveSphere(); // 1 is full amount => move point
+        }
+
+        public void GVRon(string _current, float _azimuth, List<string> lastspheres)
+        {
+            gvrStatus = true;
+            current = _current;
+            azimuth = _azimuth;
+            this.lastspheres = lastspheres;
+        }
+        public void GVROff()
+        {
+            gvrStatus = false;
+            gvrTimer = 0;
+            imgGaze.fillAmount = 0;
+        }
+        public void moveSphere()
+        {
+            last = current;
+            wantedsphere = sphereChanger.GetComponent<SpheresContainer>().GetSpheres()[("Sphere" + current)];
+            GVROff();
+            sphereChanger.ChangeSphere(wantedsphere.transform, azimuth, lastspheres);
+        }
     }
-    public void GVROff()
-    {
-        gvrStatus = false;
-        gvrTimer = 0;
-        imgGaze.fillAmount = 0;
-    }
-    public void moveSphere()
-    {
-        last = current;
-        wantedsphere = GameObject.Find("Tripod").GetComponent<SpheresContainer>().GetSpheres()[("Sphere" + current)];
-        GVROff();
-        sphereChanger.ChangeSphere(wantedsphere.transform, azimuth,lastspheres);
-    }
-}
+};

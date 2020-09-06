@@ -1,99 +1,36 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.SceneManagement;
-
-public class Parser
+using Persistence;
+namespace Logic
 {
-    public class Points
+    public class Parser
     {
-        public string Projectname { get; set; }
-        public string NavigationImage { get; set; }
-        public string FinalNavigationImage { get; set; }
-        public long StartPoint { get; set; }
-        public List<long> EndPoints = new List<long>();
-        public List<Point> points = new List<Point>();
-        public string ToString()
+        private Points DeserializeJson(string JsonText)
         {
-            string s = "";
-            s += "Project name : " + Projectname;
-            s += ",\nTrans img : " + NavigationImage;
-            s += ",\nFinal trans img : " + FinalNavigationImage + ",\n";
-            s += ",\nStart Point : " + StartPoint+ ",\n";
-            s += ",\nEnd Points : " + string.Join(",", EndPoints) + ",\n";
-            foreach (Point p in points)
+            try
             {
-                s += p.ToString() + "\n";
+                Points points = JsonConvert.DeserializeObject<Points>(JsonText);
+                SortByText(ref points);
+                return points;
             }
-            return s;
+            catch (Exception e) { SceneManager.LoadScene("InsertJson"); }
+            return null;
         }
-    }
 
-    public class Point
-    {
-        public int id { get; set; }
-        public string Picture { get; set; }
-        public List<Neighbor> Neighbors = new List<Neighbor>();
-        public List<Optionaltext> OptionalText = new List<Optionaltext>();
-        public string ToString()
+        private void SortByText(ref Points p)
         {
-            string s = "ID : " + id + "\nPATH : " + Picture + "\nNeighbors : ";
-            foreach (Neighbor n in Neighbors)
+            foreach (Point points in p.points)
             {
-                s += n.ToString();
+                points.OptionalText = points.OptionalText.OrderBy(o => o.whenToDisplay).ToList<Optionaltext>();
             }
-            s += "\nTexts : ";
-            foreach (Optionaltext o in OptionalText)
-            {
-                s += o.ToString();
-            }
-            return s;
         }
-    }
-
-    public class Neighbor
-    {
-        public int PointID { get; set; }
-        public float Azimut { get; set; }
-        public string ToString()
+        public Points ReadPoints()
         {
-            string s = "[ID : " + PointID + " , Azimuth : " + Azimut + "]";
-            return s;
+            Persistence.JsonReader reader = new Persistence.JsonReader();
+            string json = reader.GetJson();
+            return DeserializeJson(json);
         }
     }
-    public class Optionaltext
-    {
-        public string text { get; set; }
-        public float DurationInSeconds { get; set; }
-        public float whenToDisplay { get; set; }
-        public string ToString()
-        {
-            string s = "[Text : " + text + " , Duration : " + DurationInSeconds + " , after : " + whenToDisplay + "]";
-            return s;
-        }
-
-    }
-
-    public Points DeserializeJson(string JsonText)
-    {
-        try
-        {
-            Points points = JsonConvert.DeserializeObject<Points>(JsonText);
-            SortByText(ref points);
-            return points;
-        }
-        catch (Exception e) { SceneManager.LoadScene("InsertJson"); }
-        return null;
-    }
-
-    private void SortByText(ref Points p)
-    {
-        foreach (Point points in p.points)
-        {
-            points.OptionalText = points.OptionalText.OrderBy(o => o.whenToDisplay).ToList<Optionaltext>();
-        }
-    }
-}
+};

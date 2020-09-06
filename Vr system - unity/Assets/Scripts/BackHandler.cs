@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BackHandler : MonoBehaviour
+namespace Presentation
 {
-    void Awake()
+    public class BackHandler : MonoBehaviour
     {
-        Input.backButtonLeavesApp = true;
+        void Awake()
+        {
+            Input.backButtonLeavesApp = true;
+        }
     }
-}
+};

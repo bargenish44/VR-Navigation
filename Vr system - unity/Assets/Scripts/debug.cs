@@ -4,21 +4,26 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class debug : MonoBehaviour
+namespace Presentation
 {
-    public Toggle toggle;
-    public bool DebugOn = false;
+    public class debug : MonoBehaviour
+    {
+        public Toggle toggle;
+        public bool DebugOn = false;
 
-    public void BoxClicked() {
-        toggle.isOn = !toggle.isOn;
-        DebugOn = toggle.isOn;
+        public void BoxClicked()
+        {
+            toggle.isOn = !toggle.isOn;
+            DebugOn = toggle.isOn;
+        }
+        private void Start()
+        {
+            toggle.isOn = false;
+        }
+        void Awake()
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
-    private void Start()
-    {
-        toggle.isOn = false;
-    }
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
-}
+
+};

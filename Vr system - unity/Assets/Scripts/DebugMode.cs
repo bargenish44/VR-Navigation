@@ -5,24 +5,27 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DebugMode : MonoBehaviour
+namespace Presentation
 {
-    public bool DebugOn;
-    void Start()
+    public class DebugMode : MonoBehaviour
     {
-        try
+        public bool DebugOn;
+        void Start()
         {
-            DebugOn = GameObject.Find("DebugMode").GetComponent<debug>().DebugOn;
+            try
+            {
+                DebugOn = GameObject.Find("DebugMode").GetComponent<debug>().DebugOn;
+            }
+            catch (NullReferenceException e) { gameObject.SetActive(false); }
         }
-        catch (NullReferenceException e) { gameObject.SetActive(false); }
-    }
 
-    void Update()
-    {
-        string debug = "current azimth : " + (Camera.main.transform.eulerAngles.y-180) + "\n";
-        debug += "Camera rotation : " + Camera.main.transform.rotation;
+        void Update()
+        {
+            string debug = "current azimth : " + (Camera.main.transform.eulerAngles.y - 180) + "\n";
+            debug += "Camera rotation : " + Camera.main.transform.rotation;
 
-        if (DebugOn)
-            Camera.main.transform.Find("Canvas").Find("Debug").GetComponentInChildren<TextMeshProUGUI>().SetText(debug);
+            if (DebugOn)
+                Camera.main.transform.Find("Canvas").Find("Debug").GetComponentInChildren<TextMeshProUGUI>().SetText(debug);
+        }
     }
-}
+};
