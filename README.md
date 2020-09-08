@@ -1,5 +1,4 @@
 # VR-Navigation
-## My final project
 
 VR-Navigation is a tool that creates a VR world with the possibility to travel between scenes, it works generically by getting a JSON file as an input.
 
