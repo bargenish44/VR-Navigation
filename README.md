@@ -1,6 +1,8 @@
 # VR-Navigation
 ## My final project
 
+![Menu Game](https://github.com/bargenish44/VR-Navigation/blob/master/VR%20navigation%20-%20poster.jpg?raw=true)
+
 VR-Navigation is a tool that creates a VR world with the possibility to travel between scenes, it works generically by getting a JSON file as an input.
 
 The project includes two separate systems:
